@@ -33,11 +33,16 @@ nav #title {
   width: 200px;
 }
 
+nav .siwg {
+  margin-right: .5rem;
+}
+
 main {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 3rem;
 }
 
 h1 {
