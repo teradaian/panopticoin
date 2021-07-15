@@ -48,3 +48,24 @@ main {
 h1 {
   font-size: 3.6rem;
 }
+
+a{
+  text-decoration: none;
+  color: #39D87D;
+}
+
+.button {
+  background-color: #39D87D;
+  border-color: #39D87D;
+}
+
+.button-outline {
+  border-color: #39D87D;
+}
+.button.button-outline,
+button.button-outline,
+input[type="button"].button-outline,
+input[type="reset"].button-outline,
+input[type="submit"].button-outline {
+  color: #39D87D;
+}
