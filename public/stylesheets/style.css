@@ -55,6 +55,7 @@ a{
 }
 
 .button {
+  color: #202020;
   background-color: #39D87D;
   border-color: #39D87D;
 }
@@ -68,4 +69,12 @@ input[type="button"].button-outline,
 input[type="reset"].button-outline,
 input[type="submit"].button-outline {
   color: #39D87D;
+}
+
+.button, 
+button, 
+input[type='button'], 
+input[type='reset'], 
+input[type='submit'] {
+  border: 0.1rem solid #39D87D;
 }
