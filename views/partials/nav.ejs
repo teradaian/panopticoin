@@ -5,10 +5,11 @@
 <body>
 
   <nav>
-    <a href="#"><img src="/assets/title-logo.png" id="title" alt="logo"></a>
+    <a href="/"><img src="/assets/title-logo.png" id="title" alt="logo"></a>
+    <a href="../profiles">Profiles</a>
     <% if (user) { %>
       <a href="/auth/logout">
-        <button type="submit">Logout</button>
+        <button type="submit" id="logout-btn">Logout</button>
       </a>
     <% } else { %>
       <a href="/auth/google" class="siwg-link">

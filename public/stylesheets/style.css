@@ -33,8 +33,10 @@ nav #title {
   width: 200px;
 }
 
-nav .siwg {
-  margin-right: .5rem;
+nav .siwg,
+nav #logout-btn {
+  margin-top: .5rem;
+  margin-right: 1rem;
 }
 
 main {
@@ -49,8 +51,16 @@ h1 {
   font-size: 3.6rem;
 }
 
-a{
+a {
   text-decoration: none;
+  color: #39D87D;
+}
+
+.index-link {
+  color:whitesmoke;
+}
+
+.index-link:hover{
   color: #39D87D;
 }
 
@@ -77,4 +87,5 @@ input[type='button'],
 input[type='reset'], 
 input[type='submit'] {
   border: 0.1rem solid #39D87D;
+  background-color: #39D87D;
 }

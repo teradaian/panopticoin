@@ -7,3 +7,4 @@ export { router }
 const router = Router()
 
 router.get('/coins', apiCtrl.index)
+router.get('/coins/:id/show', apiCtrl.show)
