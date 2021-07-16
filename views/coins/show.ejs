@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="/stylesheets/coin-show.css">
 <%- include('../partials/nav') %>
 
 <main>
@@ -16,10 +17,17 @@
          Market Cap: $<%= coin.market_data.market_cap.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
     </div>
 </div>
-
 </div>
-              
-<p> <%- coin.description.en %> </p>
+
+<div class="wrapper">
+    <div class="wrap-1">
+      <input type="checkbox" id="tab-1" name="tabs">
+      <label for="tab-1"><div>about</div><div class="cross"></div></label>
+      <div class="content"><p> <%- coin.description.en %> </p> </div>
+    </div>
+</div>
+  
+
 </main>
 
 <%- include('../partials/footer') %>
