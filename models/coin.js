@@ -5,7 +5,7 @@ export {
 }
 
 const coinSchema = new mongoose.Schema({
-    name: {type: String, unique: true}
+    id: {type: String, unique: true}
   })
   
-  const Coin= mongoose.model("Coin", coinSchema)
+  const Coin = mongoose.model("Coin", coinSchema)
