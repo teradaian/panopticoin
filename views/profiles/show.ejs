@@ -1,4 +1,4 @@
-<%- include('../partials/html-head') %>
+<%- include('../partials/header') %>
 <%- include('../partials/nav') %>
 
 <main>
@@ -13,11 +13,8 @@
   <% } %>
   <h1><%= isSelf ? "My Profile" : profile.name %></h1>
 
-  <% if (isSelf)  {%> 
+  <% if (isSelf) {%> 
     <h1> Your Watchlists: </h1>
   <% } %>
-
-
-
 
 <%- include('../partials/footer') %>

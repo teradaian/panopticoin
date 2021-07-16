@@ -56,6 +56,10 @@ a {
   color: #39D87D;
 }
 
+.profile-img {
+  border-radius: 50%;
+}
+
 .index-link {
   color:whitesmoke;
 }

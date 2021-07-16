@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1> Welcome <%= user ? user.profile.name : "friend" %> </h1>
+  <div class="container">
+    <div class="row">
+      <% profiles.forEach(profile => { %>
+      <div class="column">
+        <a href="/profiles/<%= profile._id %>">
+          <% if (profile.avatar) { %>
+            <img
+              class="profile-img"
+              src="<%= profile.avatar %>"
+              alt="<%= profile.name %>'s avatar"
+              width="20%"
+            />
+          <% } else {%>
+            <img
+              src="/images/icons/user.png"
+              alt="A placeholder avatar"
+              width="20%"
+            />
+            <% } %>
+        </a>
+        <p> <%= profile.name %> </p>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</main>
+
+  <%- include('../partials/footer') %>
