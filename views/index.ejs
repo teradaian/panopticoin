@@ -1,9 +1,11 @@
 <%- include('./partials/header') %>
 <%- include('./partials/nav') %>
 
+
 <main>
-  <button class="button-outline">Outline</button>
-  <button class="button">Default</button>
+  <form action="/api/coins">
+    <button type='submit' class="button-outline">Ping me!</button>
+  </form>
 </main>
 
 <%- include('./partials/footer') %>

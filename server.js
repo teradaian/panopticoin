@@ -6,6 +6,7 @@ import createError from 'http-errors'
 import session from 'express-session'
 import logger from 'morgan'
 import methodOverride from 'method-override'
+import { passUserToView  } from './middleware/middleware.js'
 import passport from 'passport'
 
 // create the express app
@@ -55,6 +56,8 @@ app.use(
 // passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use(passUserToView)
 
 // router middleware
 app.use('/', indexRouter)
