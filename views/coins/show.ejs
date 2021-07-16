@@ -8,15 +8,13 @@
 <div class="container">
 <div class="row">
     <div class="column"><strong><%= coin.symbol.toUpperCase() %></strong> </div>
-    <div class="column"> $<%= coin.market_data.current_price.usd %> </div>
-    <div class="column"> 
-        Price Change 24hr $<%= coin.market_data.price_change_24h %> 
-    </div>
+    <div class="column"> Current Price: $<%= coin.market_data.current_price.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %> </div>
+    <div class="column"> Price Change 24hr: $<%= coin.market_data.price_change_24h %> </div>
+    <div class="column"> Market Cap: $<%= coin.market_data.market_cap.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %></div>
 </div>
 
 </div>
               
-<p>About (Dropdown)</p>
 <p> <%- coin.description.en %> </p>
 </main>
 

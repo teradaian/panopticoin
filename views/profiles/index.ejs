@@ -2,7 +2,8 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1> Welcome <%= user ? user.profile.name : "friend" %> </h1>
+  <img src="/assets/logo.png" alt="logo.png" width="414px">
+  <h3> Welcome <%= user ? user.profile.name : "friend" %> </h3>
   <div class="container">
     <div class="row">
       <% profiles.forEach(profile => { %>
