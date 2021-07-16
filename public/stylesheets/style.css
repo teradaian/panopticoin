@@ -28,6 +28,12 @@ nav {
   align-items: center;
 }
 
+nav div {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 nav #title {
   margin: .5rem 0 0 .5rem;
   width: 200px;
