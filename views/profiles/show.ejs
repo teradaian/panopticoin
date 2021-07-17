@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<link rel="stylesheet" href="../../stylesheets/profile-show.css">
+<link rel="stylesheet" href="/stylesheets/profile-show.css">
 <%- include('../partials/nav') %>
 
 <main>
@@ -16,14 +16,9 @@
 
   <% if (isSelf) {%> 
     <% if (profile.watchlists.length) { %>
+      <div>
     <h1> Your Watchlists: </h1>
     <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
       <tbody>
     <% profile.watchlists.forEach(watchlist => { %>
           <tr>
@@ -33,6 +28,7 @@
     <% }) %>
         </tbody>
       </table>
+    </div>
 
       <div>
       <form action="/profiles/<%= profile._id %>/watchlists" method="POST" >
