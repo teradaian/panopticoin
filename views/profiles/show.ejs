@@ -14,7 +14,63 @@
   <h1><%= isSelf ? "My Profile" : profile.name %></h1>
 
   <% if (isSelf) {%> 
+    <% if (profile.watchlists.length) { %>
     <h1> Your Watchlists: </h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Desc</th>
+          <% if (isSelf) {%> 
+          <th></th>
+          <% } %>
+        </tr>
+      </thead>
+      <tbody>
+    <% profile.watchlists.forEach(watchlist => { %>
+          <tr>
+            <td> <%= watchlist.title %> </td>
+            <td> <%= watchlist.description %> </td>
+            <% if (isSelf) {%> 
+              <td>
+                <form
+                  action="/profiles/watchlists/<%= watchlist._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button 
+                    type="submit" 
+                    class="button button-clear" 
+                    style="color:red"
+                  >
+                    <i class="far fa-eye-slash"></i>
+                  </button>
+                </form>
+              </td>
+            <% } %>
+          </tr>
+    <% }) %>
+        </tbody>
+      </table>
+
+      <div>
+      <form action="/profiles/<%= profile._id %>/watchlists" method="POST" >
+        <label for="title">Title</label>
+        <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
+        <label for="description">Description</label>
+        <textarea placeholder="Tell people about your list" id="description" name="description"></textarea>
+        <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
+    </form>
+    <% } else { %>
+      <form action="/profiles/<%= profile._id %>/watchlists" method="POST">
+          <label for="title">Title</label>
+          <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
+          <label for="description">Description</label>
+          <textarea placeholder="Tell people about your list" id="description" name="description"></textarea>
+          <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
+      </form>
+      </div>
+
+    <% } %>
   <% } %>
 
 <%- include('../partials/footer') %>

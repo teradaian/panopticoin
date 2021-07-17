@@ -2,7 +2,9 @@ import { Profile } from '../models/profile.js'
 
 export {
     index,
-    showProfile as show
+    showProfile as show,
+    newList,
+    deleteList
 }
 
 function index(req, res){
@@ -31,4 +33,20 @@ function showProfile(req, res){
         console.log(err)
         res.redirect('/profiles')
     })
+}
+
+async function newList(req,res) {
+    try{
+        const profile = await Profile.findById(req.user.profile._id)
+        profile.watchlists.push(req.body)
+        await profile.save()
+        res.redirect(`/profiles/${req.user.profile._id}`)
+    } catch (err) {
+        console.log(err)
+        res.redirect(`/profiles/${req.user.profile}`)
+    }
+} 
+
+async function deleteList(req,res) {
+    console.log('delete')
 }
