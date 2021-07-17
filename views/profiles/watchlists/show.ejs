@@ -1,4 +1,5 @@
 <%- include('../../partials/header') %>
+<link rel="stylesheet" href="/stylesheets/profile.css">
 <%- include('../../partials/nav') %>
 
 <main>
@@ -19,8 +20,9 @@
 <% } %>
 
 <% if(isSelf) { %>
+<div class="options">
     <a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/edit" class="button button-clear">
-        <h1><i class="far fa-edit"></i></h1>
+        <h1><i class="far fa-edit fa-hover-hidden"></i> <i class="fas fa-edit fa-hover-show"></i></h1>
     </a>
     <form
         action="/profiles/watchlists/<%= watchlist._id %>?_method=DELETE"
@@ -28,12 +30,13 @@
         >
         <button 
             type="submit" 
-            class="button button-clear" 
-            style="color:red"
+            class="button button-clear"
+            id="delete" 
         >
-        <h1><i class="far fa-eye-slash"></i></h1>
+        <h1><i class="far fa-eye-slash fa-hover-hidden"></i> <i class="fas fa-eye-slash fa-hover-show"></i></h1>
         </button>
     </form>
+</div>
 <% } %>
 
 </main>
