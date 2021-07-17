@@ -1,6 +1,22 @@
-<%- include('../partials/header') %>
-<%- include('../partials/nav') %>
+<%- include('../../partials/header') %>
+<%- include('../../partials/nav') %>
 
-<p>SHOW!</p>
+<main>
+<h1><%= watchlist.title %></h1>
+<p><%= isSelf ? "Your watchlist" : `${profile.name}'s watchlist` %></p>
 
-<%- include('../partials/footer') %>
+<h4> <%= watchlist.description %> </h4>
+
+<h1>Coins go here! <i class="fas fa-coins"></i></h1>
+
+<% if(watchlist.comments.length) { %>
+    <% watchlist.comments.forEach(comment => { %>
+        <p> <%= comment.comment %> </p>
+        <p> Author: <%= comment.author %> </p>
+    <% }) %>
+<% } else { %>
+<p>No comments yet</p>
+<% } %>
+</main>
+
+<%- include('../../partials/footer') %>

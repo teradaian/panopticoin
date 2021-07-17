@@ -66,7 +66,9 @@ async function showList(req,res){
         const profile = await Profile.findById(req.params.id)
         const user = await Profile.findById(req.user.profile._id)
         const isSelf = user._id.equals(profile._id)
-        res.render('profiles/show', { profile, user, isSelf, title:`${profile.name}`})
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        console.log(watchlist)
+        res.render('profiles/watchlists/show', { profile, isSelf, watchlist, title:`${profile.name}` })
 
     } catch (err) {
         console.log(err)

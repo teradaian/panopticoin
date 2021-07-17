@@ -5,6 +5,7 @@ export {
 }
 
 const commentSchema = new Schema({
+  author: String,
   comment: String,
 }, {
   timestamps: true
