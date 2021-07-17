@@ -1,0 +1,14 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/nav') %>
+
+<main>
+    <form action="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>?_method=PUT" method="POST">
+        <label for="title">Title</label>
+        <input type="text" value="<%= watchlist.title %>" id="title" name="title" autocomplete="off" required>
+        <label for="description">Description</label>
+        <input value="<%= watchlist.description %>" id="description" name="description"></input>
+        <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
+    </form>
+</main>
+
+<%- include('../../partials/footer') %>

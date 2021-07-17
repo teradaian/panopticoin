@@ -21,9 +21,6 @@
         <tr>
           <th>Name</th>
           <th>Desc</th>
-          <% if (isSelf) {%> 
-          <th></th>
-          <% } %>
         </tr>
       </thead>
       <tbody>
@@ -31,22 +28,6 @@
           <tr>
             <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.title %></a></td>
             <td><%= watchlist.description %></td>
-            <% if (isSelf) {%> 
-              <td>
-                <form
-                  action="/profiles/watchlists/<%= watchlist._id %>?_method=DELETE"
-                  method="POST"
-                >
-                  <button 
-                    type="submit" 
-                    class="button button-clear" 
-                    style="color:red"
-                  >
-                    <i class="far fa-eye-slash"></i>
-                  </button>
-                </form>
-              </td>
-            <% } %>
           </tr>
     <% }) %>
         </tbody>
@@ -57,7 +38,7 @@
         <label for="title">Title</label>
         <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
         <label for="description">Description</label>
-        <textarea placeholder="Tell people about your list" id="description" name="description"></textarea>
+        <input placeholder="Tell people about your list" id="description" name="description"></input>
         <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
     </form>
     <% } else { %>
@@ -65,7 +46,7 @@
           <label for="title">Title</label>
           <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
           <label for="description">Description</label>
-          <textarea placeholder="Tell people about your list" id="description" name="description"></textarea>
+          <input placeholder="Tell people about your list" id="description" name="description"></input>
           <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
       </form>
       </div>

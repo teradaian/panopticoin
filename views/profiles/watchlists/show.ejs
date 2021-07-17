@@ -17,6 +17,27 @@
 <% } else { %>
 <p>No comments yet</p>
 <% } %>
+
+<% if(isSelf) { %>
+    <a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/edit" class="button button-clear">
+        <h1><i class="far fa-edit"></i></h1>
+    </a>
+    <form
+        action="/profiles/watchlists/<%= watchlist._id %>?_method=DELETE"
+        method="POST"
+        >
+        <button 
+            type="submit" 
+            class="button button-clear" 
+            style="color:red"
+        >
+        <h1><i class="far fa-eye-slash"></i></h1>
+        </button>
+    </form>
+<% } %>
+
 </main>
+
+
 
 <%- include('../../partials/footer') %>

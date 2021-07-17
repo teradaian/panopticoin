@@ -5,7 +5,9 @@ export {
     showProfile as show,
     newList,
     deleteList,
-    showList
+    showList,
+    editList,
+    update
 }
 
 function index(req, res){
@@ -17,23 +19,20 @@ function index(req, res){
     })
 }
 
-function showProfile(req, res){
-    Profile.findById(req.params.id)
-    .then(profile => {
-        Profile.findById(req.user.profile._id)
-        .then(self => {
-            const isSelf = self._id.equals(profile._id)
+async function showProfile(req, res){
+    try{
+        const profile = await Profile.findById(req.params.id)
+        const user = await Profile.findById(req.user.profile._id)
+        const isSelf = user._id.equals(profile._id)
             res.render('profiles/show', {
                 profile, 
                 title: `${profile.name}`,
                 isSelf
             })
-        })
-    })
-    .catch(err => {
+        } catch (err){
         console.log(err)
         res.redirect('/profiles')
-    })
+    }
 }
 
 async function newList(req,res) {
@@ -67,9 +66,41 @@ async function showList(req,res){
         const user = await Profile.findById(req.user.profile._id)
         const isSelf = user._id.equals(profile._id)
         const watchlist = await profile.watchlists.id(req.params.watchlistId)
-        console.log(watchlist)
         res.render('profiles/watchlists/show', { profile, isSelf, watchlist, title:`${profile.name}` })
 
+    } catch (err) {
+        console.log(err)
+        res.redirect(`/profiles/${req.user.profile}`)
+    }
+}
+
+async function editList(req,res){
+    try {
+        const profile = await Profile.findById(req.params.id)
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        const user = await Profile.findById(req.user.profile._id)
+        if (user._id.equals(profile._id)) {
+            res.render('profiles/watchlists/edit', { profile, watchlist, title: 'Edit' })
+        } else {
+            throw new Error ('Not Authorized')
+        }
+    } catch (err) {
+        console.log(err)
+        res.redirect(`/profiles/${req.user.profile}`)
+    }
+}
+
+async function update(req,res){
+    try {
+        const profile = await Profile.findById(req.params.id)
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        const user = await Profile.findById(req.user.profile._id)
+        if (user._id.equals(profile._id)) {
+            watchlist.update(req.body, {new:true})
+            res.redirect(`/watchlists/${watchlist._id}`)
+        } else {
+            throw new Error ('Not Authorized')
+        }
     } catch (err) {
         console.log(err)
         res.redirect(`/profiles/${req.user.profile}`)
