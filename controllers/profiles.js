@@ -4,7 +4,8 @@ export {
     index,
     showProfile as show,
     newList,
-    deleteList
+    deleteList,
+    showList
 }
 
 function index(req, res){
@@ -54,6 +55,19 @@ async function deleteList(req,res) {
         profile.watchlists.remove(watchlist)
         await profile.save()
         res.redirect(`/profiles/${req.user.profile._id}`)
+    } catch (err) {
+        console.log(err)
+        res.redirect(`/profiles/${req.user.profile}`)
+    }
+}
+
+async function showList(req,res){
+    try {
+        const profile = await Profile.findById(req.params.id)
+        const user = await Profile.findById(req.user.profile._id)
+        const isSelf = user._id.equals(profile._id)
+        res.render('profiles/show', { profile, user, isSelf, title:`${profile.name}`})
+
     } catch (err) {
         console.log(err)
         res.redirect(`/profiles/${req.user.profile}`)
