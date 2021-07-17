@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header h1 {
+    margin-bottom: 0;
+  }
+  
+  main a {
+    color: white;
+  }
+  
+  a:hover {
+    color: #39D87D;
+  }
+  
+  .options {
+      display: flex;
+  }
+  
+  .button.button-clear, 
+  button.button-clear, 
+  input[type='button'].button-clear, 
+  input[type='reset'].button-clear, 
+  input[type='submit'].button-clear {
+      color: #39D87D;
+  }
+  
+  .button.button-clear:hover {
+      color: #39D87D
+  }
+  
+  #delete {
+      color: red;
+  }
+  
+  * > .fa-hover-show,
+  *:hover > .fa-hover-hidden,
+  *:focus > .fa-hover-hidden {
+    display: none;
+  }
+  *:focus > .fa-hover-show,
+  *:hover > .fa-hover-show {
+    display: inline-block;
+  }

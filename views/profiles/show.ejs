@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="../../stylesheets/profile-show.css">
 <%- include('../partials/nav') %>
 
 <main>
@@ -20,7 +21,7 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Desc</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +39,7 @@
         <label for="title">Title</label>
         <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
         <label for="description">Description</label>
-        <input placeholder="Tell people about your list" id="description" name="description"></input>
+        <input placeholder="Tell people about your list" id="description" name="description" autocomplete="off"></input>
         <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
     </form>
     <% } else { %>

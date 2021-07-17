@@ -1,14 +1,22 @@
 <%- include('../../partials/header') %>
-<link rel="stylesheet" href="/stylesheets/profile.css">
+<link rel="stylesheet" href="/stylesheets/watchlist-show.css">
 <%- include('../../partials/nav') %>
 
 <main>
-<h1><%= watchlist.title %></h1>
-<p><%= isSelf ? "Your watchlist" : `${profile.name}'s watchlist` %></p>
+    <header>
+        <h1><%= watchlist.title %></h1>
+        <small><p><%= isSelf ? "Your watchlist" : `${profile.name}'s watchlist` %></p></small>
+    </header>
+
 
 <h4> <%= watchlist.description %> </h4>
 
-<h1>Coins go here! <i class="fas fa-coins"></i></h1>
+<a href='/'><h1>Add Coins 
+    <i class="far fa-plus-square fa-hover-hidden"></i>
+    <i class="fas fa-plus-square fa-hover-show"></i>
+    <i class="fas fa-coins fa-hover-show"></i>
+</h1>
+</a>
 
 <% if(watchlist.comments.length) { %>
     <% watchlist.comments.forEach(comment => { %>
