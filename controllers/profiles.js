@@ -36,7 +36,7 @@ function showProfile(req, res){
 }
 
 async function newList(req,res) {
-    try{
+    try {
         const profile = await Profile.findById(req.user.profile._id)
         profile.watchlists.push(req.body)
         await profile.save()
@@ -48,5 +48,14 @@ async function newList(req,res) {
 } 
 
 async function deleteList(req,res) {
-    console.log('delete')
+    try {
+        const profile = await Profile.findById(req.user.profile._id)
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        profile.watchlists.remove(watchlist)
+        await profile.save()
+        res.redirect(`/profiles/${req.user.profile._id}`)
+    } catch (err) {
+        console.log(err)
+        res.redirect(`/profiles/${req.user.profile}`)
+    }
 }
