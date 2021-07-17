@@ -84,8 +84,8 @@ async function editList(req,res){
         } else {
             throw new Error ('Not Authorized')
         }
-    } catch (err) {
-        console.log(err)
+    } catch (Error) {
+        console.log(Error)
         res.redirect(`/profiles/${req.user.profile}`)
     }
 }
@@ -93,16 +93,19 @@ async function editList(req,res){
 async function update(req,res){
     try {
         const profile = await Profile.findById(req.params.id)
-        const watchlist = await profile.watchlists.id(req.params.watchlistId)
         const user = await Profile.findById(req.user.profile._id)
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        console.log(watchlist)
         if (user._id.equals(profile._id)) {
-            watchlist.update(req.body, {new:true})
-            res.redirect(`/watchlists/${watchlist._id}`)
+            watchlist.title = req.body.title
+            watchlist.description = req.body.description
+            await profile.save()
+            res.redirect(`/profiles/${profile._id}/watchlists/${watchlist._id}`)
         } else {
             throw new Error ('Not Authorized')
         }
-    } catch (err) {
-        console.log(err)
-        res.redirect(`/profiles/${req.user.profile}`)
+    } catch (Error) {
+        console.log(Error)
+        res.redirect(`/profiles`)
     }
 }
