@@ -43,6 +43,22 @@ nav .siwg,
 nav #logout-btn {
   margin-top: .5rem;
   margin-right: 1rem;
+  color: black;
+  padding: 0 2.2rem;
+  display: flex;
+}
+
+nav #logout-btn span {
+  font-size: 2rem;
+}
+
+nav .nav-link {
+  margin: 0 1rem;
+  color: whitesmoke;
+}
+
+nav .nav-link:hover {
+  color: #39D87D;
 }
 
 main {

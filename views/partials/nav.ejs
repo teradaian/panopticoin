@@ -8,10 +8,10 @@
   <nav>
     <a href="/"><img src="/assets/title-logo.png" id="title" alt="logo"></a>
     <div>
-    <a href="/profiles">Profiles</a>
+    <a href="/profiles" class="nav-link">Profiles</a>
     <% if (user) { %>
       <a href="/auth/logout">
-        <button type="submit" id="logout-btn">Logout</button>
+        <button type="submit" id="logout-btn">Logout &nbsp; <span><i class="fas fa-sign-out-alt"></i></span></button>
       </a>
     <% } else { %>
       <a href="/auth/google" class="siwg-link">
