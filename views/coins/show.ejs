@@ -26,8 +26,24 @@
       <div class="content"><p> <%- coin.description.en %> </p> </div>
     </div>
 </div>
-  
 
+<% if(profile.watchlists) { %>
+<h1>Add to watchlist</h1>
+<ul>
+<% profile.watchlists.forEach(watchlist => { %>
+    <li>
+        <form action="/api/coins/<%= coin.id %>" method="POST">
+            <input name="<%= watchlist._id %>">
+            <button class="button button-clear" type="submit">
+                <%= watchlist.title %>
+            </button>
+        </form>
+    </li> 
+<% }) %>
+</ul>
+<% } else { %>
+Add a watchlist
+<% } %>
 </main>
 
 <%- include('../partials/footer') %>

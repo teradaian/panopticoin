@@ -14,4 +14,3 @@ router.put('/:id/watchlists/:watchlistId', isLoggedIn, profilesCtrl.update)
 router.post('/:id/watchlists', isLoggedIn, profilesCtrl.newList)
 router.delete('/watchlists/:watchlistId', isLoggedIn, profilesCtrl.deleteList)
 
-// watchlists/show doesn't need auth
