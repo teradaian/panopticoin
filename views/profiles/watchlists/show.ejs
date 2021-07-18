@@ -14,7 +14,7 @@
 <div class="watchlist">
     <% watchlist.coins.forEach(coin => { %>
         <div class="coin-container">
-            <img src="<%= coin.image %>" alt="<%= coin.id %>" width="90px">
+            <a href="/api/coins/<%= coin.id %>/show" alt="info about <%= coin.id %>"><img src="<%= coin.image %>" alt="<%= coin.id %>" width="90px"></a>
             <br>
             <span class="symbol"><%= coin.symbol %></span>
             <form
