@@ -65,9 +65,14 @@ async function showList(req,res){
         const profile = await Profile.findById(req.params.id)
         const user = await Profile.findById(req.user.profile._id)
         const isSelf = user._id.equals(profile._id)
-        const watchlist = await profile.watchlists.id(req.params.watchlistId)
-        res.render('profiles/watchlists/show', { profile, isSelf, watchlist, title:`${profile.name}` })
+        // const watchlist = await profile.watchlists.id(req.params.watchlistId)
 
+        Profile.find().populate({path: 'watchlists', populate: {path: 'coins'}})
+        .exec((err, popProfile) => {
+            const watchlist = popProfile[0].watchlists.id(req.params.watchlistId)
+            if (err) { console.log(err) }
+            res.render('profiles/watchlists/show', { profile, isSelf, watchlist, title:`${profile.name}'s Watchlist` })
+        })
     } catch (err) {
         console.log(err)
         res.redirect(`/profiles/${req.user.profile}`)

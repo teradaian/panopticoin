@@ -11,6 +11,14 @@
 
 <h4> <%= watchlist.description %> </h4>
 
+<% console.log(watchlist.coins, 'coins') %>
+<div>
+    <% watchlist.coins.forEach(coin => { %>
+        <p><%= coin.name %></p>
+        <img src="<%= coin.image %>" alt="<%= coin.id %>">
+    <% }) %>
+</div>
+
 <a href='/'><h1>Add Coins 
     <i class="far fa-plus-square fa-hover-hidden"></i>
     <i class="fas fa-plus-square fa-hover-show"></i>
