@@ -1,7 +1,3 @@
-body {
-    overflow: hidden;
-}
-
 .wrapper {
     max-width: 600px;
     width: 100%;
@@ -61,6 +57,7 @@ label div:first-child {
     box-sizing: border-box;
     font-size: 0.9em;
     margin: 10px 10px;
+    height: fit-content;
     max-height: 0;
     overflow: hidden;
     transition: max-height, .5s;
@@ -77,4 +74,16 @@ input:checked ~ label .cross:before {
 
 input:checked ~ label .cross:after {
     transform: rotate(0deg);
+}
+
+.show-add-btn {
+    font-size: 3rem;
+}
+
+.button.button-clear, 
+button.button-clear, 
+input[type='button'].button-clear, 
+input[type='reset'].button-clear, 
+input[type='submit'].button-clear {
+    color: #39D87D
 }
