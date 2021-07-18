@@ -8,13 +8,22 @@
 
 <div class="container">
 <div class="row">
-    <div class="column"><strong><%= coin.symbol.toUpperCase() %></strong> </div>
-    <div class="column"> 
-        Current Price: $<%= coin.market_data.current_price.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %> 
-    </div>
-    <div class="column"> Price Change 24hr: $<%= coin.market_data.price_change_24h %> </div>
     <div class="column">
-         Market Cap: $<%= coin.market_data.market_cap.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+        <h2><strong><%= coin.symbol.toUpperCase() %></strong></h2>
+    </div>
+    <div class="column"> 
+        Current Price: 
+        <br> 
+        <h2>$<%= coin.market_data.current_price.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %></h2>
+    </div>
+    <div class="column"> 
+        Price Change 24hr: 
+        <br> 
+        <h2>$<%= coin.market_data.price_change_24h %> </div></h2>
+    <div class="column">
+         Market Cap:
+         <br>
+        <h2>$<%= coin.market_data.market_cap.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %></h2>
     </div>
 </div>
 </div>
@@ -27,9 +36,9 @@
     </div>
 </div>
 
+<h3>Add to watchlist</h3>
 <div class="show-watchlists-container">
 <% if(profile.watchlists) { %>
-<h1>Add to watchlist</h1>
 <% profile.watchlists.forEach(watchlist => { %>
         <form action="/api/coins/<%= coin.id %>" method="POST">
             <input value= "<%= watchlist._id %>" name="watchlistId">

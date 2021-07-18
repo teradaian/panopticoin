@@ -34,6 +34,7 @@ label div:first-child {
     font-size: 1.2em;
 }
 
+
 .cross{
     margin-right:15px;
     margin-top:3px;
@@ -57,14 +58,13 @@ label div:first-child {
     box-sizing: border-box;
     font-size: 0.9em;
     margin: 10px 10px;
-    height: fit-content;
     max-height: 0;
     overflow: hidden;
     transition: max-height, .5s;
 }
 
 input:checked ~ .content {
-    max-height: 400px;
+    max-height: 2000px;
     transition: max-height, 1s;
 }
 
@@ -76,8 +76,17 @@ input:checked ~ label .cross:after {
     transform: rotate(0deg);
 }
 
+.show-watchlists-container {
+    justify-content: center;
+    align-content: start;
+    border: 1px solid #3E474F;
+}
+
 .show-add-btn {
     font-size: 3rem;
+    margin-top: 1rem;
+    text-transform: capitalize;
+    font-weight: 200;
 }
 
 .button.button-clear, 
@@ -87,3 +96,4 @@ input[type='reset'].button-clear,
 input[type='submit'].button-clear {
     color: #39D87D
 }
+
