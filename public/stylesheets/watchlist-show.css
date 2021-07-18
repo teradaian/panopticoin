@@ -40,6 +40,18 @@ header {
   .button.button-clear:hover {
       color: #39D87D
   }
+
+  div.coin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #delete-coin {
+    color: red;
+    font-size: 1rem;
+  }
   
   #delete {
       color: red;

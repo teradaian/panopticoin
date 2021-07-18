@@ -125,6 +125,6 @@ async function deleteCoinFromList(req, res){
         res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
     } catch (Error) {
         console.log(Error)
-        res.redirect(`/profiles/${req.user.profile._id}`)
+        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
     }
 }
