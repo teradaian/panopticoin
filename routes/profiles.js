@@ -12,5 +12,5 @@ router.get('/:id/watchlists/:watchlistId', isLoggedIn, profilesCtrl.showList)
 router.get('/:id', isLoggedIn, profilesCtrl.show)
 router.put('/:id/watchlists/:watchlistId', isLoggedIn, profilesCtrl.update)
 router.post('/:id/watchlists', isLoggedIn, profilesCtrl.newList)
+router.delete('/watchlists/:watchlistId/show/:coinId', isLoggedIn, profilesCtrl.deleteCoinFromList)
 router.delete('/watchlists/:watchlistId', isLoggedIn, profilesCtrl.deleteList)
-

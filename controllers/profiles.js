@@ -7,7 +7,8 @@ export {
     deleteList,
     showList,
     editList,
-    update
+    update,
+    deleteCoinFromList
 }
 
 function index(req, res){
@@ -112,5 +113,18 @@ async function update(req,res){
     } catch (Error) {
         console.log(Error)
         res.redirect(`/profiles`)
+    }
+}
+
+async function deleteCoinFromList(req, res){
+    try {
+        const profile = await Profile.findById(req.user.profile._id)
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        watchlist.coins.remove({ _id: req.params.coinId })
+        await profile.save()
+        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
+    } catch (Error) {
+        console.log(Error)
+        res.redirect(`/profiles/${req.user.profile._id}`)
     }
 }

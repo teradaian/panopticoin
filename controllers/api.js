@@ -6,7 +6,6 @@ export {
     index,
     showCoin as show,
     create,
-    deleteCoin as delete
 }
 
 function index(req, res){
@@ -74,8 +73,4 @@ async function create(req,res){
     console.log(Error)
     res.redirect(`/api/coins/${req.params.id}/show`)
     }
-}
-
-function deleteCoin(req,res) {
-    console.log('delete route hits')
 }

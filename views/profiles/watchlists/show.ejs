@@ -21,13 +21,24 @@
                 <br>
                 <%= coin.name %>
             </div>
+
+            <form
+            action="/profiles/watchlists/<%= watchlist.id %>/show/<%= coin._id %>?_method=DELETE"
+            method="POST"
+            >
+            <button 
+                type="submit" 
+                class="button button-clear"
+                id="delete" 
+            >
+            <h1><i class="far fa-trash-alt"></i></h1>
+            </button>
+        </form>
         </td> 
             <% }) %>
       </tr>
     </tbody>
   </table>
-   
-
 
 <a href='/api/coins'><h1>Add Coins 
     <i class="far fa-plus-square fa-hover-hidden"></i>
