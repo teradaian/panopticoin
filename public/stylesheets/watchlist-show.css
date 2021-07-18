@@ -41,6 +41,12 @@ header {
       color: #39D87D
   }
 
+  div.watchlist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
   div.coin-container {
     display: flex;
     flex-direction: column;
@@ -48,9 +54,14 @@ header {
     justify-content: center;
   }
 
+  span.symbol {
+    text-transform: uppercase;
+    font-size: 3.5rem;
+  }
+
   #delete-coin {
-    color: red;
-    font-size: 1rem;
+   color: red;
+
   }
   
   #delete {

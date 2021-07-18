@@ -11,33 +11,28 @@
 
 <h4> <%= watchlist.description %> </h4>
 
-<table class="watchlist-table">
-    <tbody>
-      <tr>
-        <% watchlist.coins.forEach(coin => { %>
-        <td>
-            <div class="coin-container">
-                <img src="<%= coin.image %>" alt="<%= coin.id %>" width="50px">
-                <br>
-                <%= coin.name %>
-                <form
-                action="/profiles/watchlists/<%= watchlist.id %>/show/<%= coin._id %>?_method=DELETE"
-                method="POST"
-                >
-                <button 
-                    type="submit" 
-                    class="button button-clear"
-                    id="delete-coin" 
-                >
-                <h1><i class="far fa-trash-alt"></i></h1>
-                </button>
-            </form>
-            </div>
-        </td> 
-            <% }) %>
-      </tr>
-    </tbody>
-  </table>
+<div class="watchlist">
+    <% watchlist.coins.forEach(coin => { %>
+        <div class="coin-container">
+            <img src="<%= coin.image %>" alt="<%= coin.id %>" width="90px">
+            <br>
+            <span class="symbol"><%= coin.symbol %></span>
+            <form
+            action="/profiles/watchlists/<%= watchlist.id %>/show/<%= coin._id %>?_method=DELETE"
+            method="POST"
+            >
+            <button 
+                type="submit" 
+                class="button button-clear"
+                id="delete-coin" 
+            >
+            <h4><i class="far fa-eye-slash fa-hover-hidden"></i> <i class="fas fa-eye-slash fa-hover-show"></i></h4>
+            </button>
+        </form>
+        </div>
+        <% }) %>
+</div>
+        
 
 <a href='/api/coins'><h1>Add Coins 
     <i class="far fa-plus-square fa-hover-hidden"></i>
@@ -69,7 +64,7 @@
             class="button button-clear"
             id="delete" 
         >
-        <h1><i class="far fa-eye-slash fa-hover-hidden"></i> <i class="fas fa-eye-slash fa-hover-show"></i></h1>
+        <h1><i class="far fa-trash-alt"></i></h1>
         </button>
     </form>
 </div>
