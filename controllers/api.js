@@ -58,11 +58,12 @@ async function create(req,res){
                 profile[0].save(err => {
                 res.redirect(`/api/coins/${req.params.id}/show`)
                 })
-
             } else {
                 console.log(`${req.params.id} exists in DB - skipping add`)
                 Coin.findOne({ id: req.params.id })
-                .then(coin => watchlist.coins.push(coin))
+                .then(coin => {
+                    watchlist.coins.addToSet(coin)
+                })
                 .then(() => profile[0].save(err => {
                     res.redirect(`/api/coins/${req.params.id}/show`)
                     }))
