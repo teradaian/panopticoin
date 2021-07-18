@@ -37,9 +37,8 @@ async function showCoin(req, res){
 
 async function create(req,res){
     try {
-        let profile = await Profile.find({ _id: req.user.profile._id})
-        console.log(req.body, 'req.body')
-        // let watchlist = await Profile.find({ _id: req.body._id })
+        const profile = await Profile.find({ _id: req.user.profile._id})
+        const watchlist = await profile[0].watchlists.id(req.body.watchlistId)
         fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
         .then(response => response.json())
         .then(async data => {
@@ -55,13 +54,26 @@ async function create(req,res){
                 coin.save(err => {
                     if (err) { console.log (err) }
                 })
-                
+
+                console.log(watchlist)
+                watchlist.coins.push(coin._id)
+                profile[0].save(err => {
+                res.redirect(`/api/coins/${req.params.id}/show`)
+                })
+
             } else {
-               console.log(`${req.params.id} exists in DB - skipping`)
-            }
+                console.log(`${req.params.id} exists in DB - skipping add`)
+                res.redirect(`/api/coins/${req.params.id}/show`)
+                // .then(() => 
+                //     profile.save(err => {
+                //         if (err) { console.log (err) }
+                //         res.redirect(`/api/coins/${req.params.id}/show`)
+                //     })
+                // )
+            }})
         })
-        res.redirect(`/api/coins/${req.params.id}/show`) 
-    })} catch (Error) {
-        console.log(Error)
-        res.redirect(`/api/coins/${req.params.id}/show`)
-}}
+    } catch (Error) {
+    console.log(Error)
+    res.redirect(`/api/coins/${req.params.id}/show`)
+    }
+}

@@ -33,7 +33,7 @@
 <% profile.watchlists.forEach(watchlist => { %>
     <li>
         <form action="/api/coins/<%= coin.id %>" method="POST">
-            <input name="<%= watchlist._id %>">
+            <input value= "<%= watchlist._id %>" name="watchlistId">
             <button class="button button-clear" type="submit">
                 <%= watchlist.title %>
             </button>
