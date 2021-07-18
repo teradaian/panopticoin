@@ -54,8 +54,6 @@ async function create(req,res){
                 coin.save(err => {
                     if (err) { console.log (err) }
                 })
-
-                console.log(watchlist)
                 watchlist.coins.push(coin._id)
                 profile[0].save(err => {
                 res.redirect(`/api/coins/${req.params.id}/show`)
@@ -63,13 +61,11 @@ async function create(req,res){
 
             } else {
                 console.log(`${req.params.id} exists in DB - skipping add`)
-                res.redirect(`/api/coins/${req.params.id}/show`)
-                // .then(() => 
-                //     profile.save(err => {
-                //         if (err) { console.log (err) }
-                //         res.redirect(`/api/coins/${req.params.id}/show`)
-                //     })
-                // )
+                Coin.findOne({ id: req.params.id })
+                .then(coin => watchlist.coins.push(coin))
+                .then(() => profile[0].save(err => {
+                    res.redirect(`/api/coins/${req.params.id}/show`)
+                    }))
             }})
         })
     } catch (Error) {
