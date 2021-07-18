@@ -55,9 +55,9 @@ async function create(req,res){
                 coin.save(err => {
                     if (err) { console.log (err) }
                 })
-              
+                
             } else {
-               console.log('something wongh')
+               console.log(`${req.params.id} exists in DB - skipping`)
             }
         })
         res.redirect(`/api/coins/${req.params.id}/show`) 
