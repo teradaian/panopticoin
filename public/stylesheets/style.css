@@ -78,6 +78,16 @@ a {
   color: #39D87D;
 }
 
+div.search-container{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+
+div.search {
+  width: 200px;
+}
+
 .profile-img {
   border-radius: 50%;
 }
@@ -99,6 +109,11 @@ a {
 .button-outline {
   border-color: #39D87D;
 }
+
+button.submit-btn {
+  display: none;
+}
+
 .button.button-outline,
 button.button-outline,
 input[type="button"].button-outline,
