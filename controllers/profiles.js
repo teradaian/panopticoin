@@ -25,13 +25,20 @@ async function showProfile(req, res){
         const profile = await Profile.findById(req.params.id)
         const user = await Profile.findById(req.user.profile._id)
         const isSelf = user._id.equals(profile._id)
+        Profile.find().populate({path: 'watchlists', populate: {path: 'coins'}})
+        .exec((err, data) => {
+            if (err) { console.log(err) }
+            let watchlists = data[0].watchlists
             res.render('profiles/show', {
+                watchlists,
                 profile, 
                 title: `${profile.name}`,
                 isSelf
             })
-        } catch (err){
-        console.log(err)
+        })
+            
+        } catch (Error){
+        console.log(Error)
         res.redirect('/profiles')
     }
 }

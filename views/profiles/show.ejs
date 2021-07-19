@@ -16,7 +16,7 @@
 
   <% if (isSelf) {%> 
     <% if (profile.watchlists.length) { %>
-      <div>
+      <div class="show-table-container">
     <h1> Your Watchlists: </h1>
     <table>
       <tbody>
@@ -24,6 +24,13 @@
           <tr>
             <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.title %></a></td>
             <td><%= watchlist.description %></td>
+            <td>
+              <% watchlists.forEach(watchlist => { %>
+                <% watchlist.coins.forEach(coin => { %>
+                  <img src="<%= coin.image %>" width="40px"></img>
+                <% }) %>
+              <% }) %>
+          </td>
           </tr>
     <% }) %>
         </tbody>

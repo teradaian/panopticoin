@@ -2,3 +2,7 @@
     background-color: #39D87D;
     color: black;
 }
+
+div.show-table-container {
+    width: 75vw;
+}
