@@ -17,9 +17,9 @@
     <tbody>
         <% coins.forEach(coin => { %>
             <tr>
-              <td> <a href='coins/<%= coin.item.id %>/show'><img src='<%= coin.item.large %>' width="50px" alt='<%= coin.item.id %> logo'></a> </td>
-              <td> <a href='coins/<%= coin.item.id %>/show' class="index-link"> <strong> <%= coin.item.name %> </strong> </a> </td>
-              <td> <a href='coins/<%= coin.item.id %>/show' class="index-link"> <span class="symbol-text"><%= coin.item.symbol.toUpperCase() %></span> </a> </td>
+              <td> <a href='<%= coin.item.id %>/show'><img src='<%= coin.item.large %>' width="50px" alt='<%= coin.item.id %> logo'></a> </td>
+              <td> <a href='<%= coin.item.id %>/show' class="index-link"> <strong> <%= coin.item.name %> </strong> </a> </td>
+              <td> <a href='<%= coin.item.id %>/show' class="index-link"> <span class="symbol-text"><%= coin.item.symbol.toUpperCase() %></span> </a> </td>
               <td> $<%= coin.item.current_price > 1 ? coin.item.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : coin.item.current_price %> </td>
             </tr>
         <% }) %>
