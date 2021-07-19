@@ -189,3 +189,21 @@ textarea:focus,
 select:focus {
   border-color: #39D87D;
 }
+
+.desktop-details {
+  display: none;
+}
+
+.bearish {
+  color: rgb(252, 80, 80)
+}
+
+.bullish {
+  color: #39D87D;
+}
+
+@media only screen and (min-width: 1024px) { 
+  .desktop-details {
+    display: table-cell;
+  }
+}

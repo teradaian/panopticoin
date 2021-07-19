@@ -28,7 +28,6 @@ function trending(req, res){
         fetch('https://api.coingecko.com/api/v3/search/trending')
         .then(response => response.json())
         .then(data => {
-            console.log(data.coins)
             res.render('coins/trending', { coins: data.coins, title: 'Trending', user: req.user ? req.user : null })
         })
     } catch (Error) {

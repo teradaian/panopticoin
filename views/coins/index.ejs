@@ -16,7 +16,6 @@
   <a href="/api/coins/trending" class="button button-outline">Trending <i class="fas fa-chart-line"></i><i class="fas fa-rocket"></i></a>
 
 </div>
-
 <table>
     <tbody>
         <% coins.forEach(coin => { %>
@@ -25,6 +24,21 @@
               <td> <a href='coins/<%= coin.id %>/show' class="index-link"> <strong> <%= coin.name %> </strong> </a> </td>
               <td> <a href='coins/<%= coin.id %>/show' class="index-link"> <span class="symbol-text"><%= coin.symbol.toUpperCase() %></span> </a> </td>
               <td> $<%= coin.current_price > 1 ? coin.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : coin.current_price %> </td>
+                <td class="desktop-details"> 24hr High <i class="fas fa-chevron-up bullish"> </i> $<%= coin.high_24h %> </td>
+                <td class="desktop-details"> 24hr Low <i class="fas fa-chevron-down bearish"> </i> $<%= coin.low_24h %> </td>
+                <% trim = (num) => Number.parseFloat(num).toFixed(2) %>
+                <td class="desktop-details"> 
+                  Price Change: 
+                  <span  class="<%= coin.price_change_percentage_24h >= 0 ? "bullish" : "bearish" %>">
+                    <%= trim(coin.price_change_percentage_24h) %>% 
+                  </span> 
+                </td>
+                <td class="desktop-details"> 
+                  Market Cap Change:  
+                  <span  class="<%= coin.market_cap_change_percentage_24h >= 0 ? "bullish" : "bearish" %>">
+                    <%= trim(coin.market_cap_change_percentage_24h) %>%
+                  </span> 
+                </td>  
             </tr>
         <% }) %>
     </tbody>
