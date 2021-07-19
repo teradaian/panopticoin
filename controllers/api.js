@@ -6,7 +6,8 @@ export {
     index,
     showCoin as show,
     create,
-    searchCoins as search
+    searchCoins as search,
+    trending
 }
 
 function index(req, res){
@@ -15,6 +16,20 @@ function index(req, res){
         .then(response => response.json())
         .then(data => {
             res.render('coins/index', { coins: data, title: 'Coin Index', user: req.user ? req.user : null })
+        })
+    } catch (Error) {
+        console.log(Error)
+        res.json(Error)
+    }
+}
+
+function trending(req, res){
+    try {
+        fetch('https://api.coingecko.com/api/v3/search/trending')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.coins)
+            res.render('coins/trending', { coins: data.coins, title: 'Trending', user: req.user ? req.user : null })
         })
     } catch (Error) {
         console.log(Error)

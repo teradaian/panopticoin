@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<main>
+
+<a href="/api/coins" class="button button-outline">Top Coins</i></a>
+
+<table>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% coins.forEach(coin => { %>
+            <tr>
+              <td> <a href='coins/<%= coin.item.id %>/show'><img src='<%= coin.item.large %>' width="50px" alt='<%= coin.item.id %> logo'></a> </td>
+              <td> <a href='coins/<%= coin.item.id %>/show' class="index-link"> <strong> <%= coin.item.name %> </strong> </a> </td>
+              <td> <a href='coins/<%= coin.item.id %>/show' class="index-link"> <span class="symbol-text"><%= coin.item.symbol.toUpperCase() %></span> </a> </td>
+              <td> $<%= coin.item.current_price > 1 ? coin.item.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : coin.item.current_price %> </td>
+            </tr>
+        <% }) %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>
