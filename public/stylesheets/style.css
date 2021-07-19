@@ -96,6 +96,10 @@ img.self {
   margin-top: 6.3rem;
 }
 
+img.coin-logo {
+  min-width: 50px;
+}
+
 #logo {
   position: absolute;
   z-index: -1;
