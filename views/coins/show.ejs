@@ -46,8 +46,7 @@
       <input type="checkbox" id="tab-2" name="tabs">
       <label for="tab-2"><div>Add to watchlist</div><div class="cross"></div></label>
       <div class="content">
-        <div class="show-watchlists-container">
-            <% if(profile.watchlists) { %>
+            <% if(profile.watchlists.length) { %>
             <% profile.watchlists.forEach(watchlist => { %>
                     <form action="/api/coins/<%= coin.id %>" method="POST">
                         <input value= "<%= watchlist._id %>" name="watchlistId">
@@ -57,11 +56,9 @@
                         </button>
                     </form>
             <% }) %>
-            </ul>
             <% } else { %>
-            Add a watchlist
+            <h1><i class="far fa-eye-slash"></i> You don't have any watchlists yet</i></h1>
             <% } %>
-            </div>
         </div>
     </div>
 </div>
