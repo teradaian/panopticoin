@@ -18,8 +18,13 @@
     </div>
     <div class="column"> 
         Price Change 24hr: 
-        <br> 
-        <h2>$<%= coin.market_data.price_change_24h %> </div></h2>
+        <br>
+        <h2>
+            <span  class="<%= coin.market_data.price_change_24h >= 0 ? "bullish" : "bearish" %>">
+                $<%= coin.market_data.price_change_24h %>
+            </span> 
+        </h2> 
+    </div>
     <div class="column">
          Market Cap:
          <br>

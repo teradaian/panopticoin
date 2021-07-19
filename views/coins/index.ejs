@@ -20,16 +20,16 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Name</th>
-        <th>Current Price</th>
+        <th></th>
+        <th>Price</th>
       </tr>
     </thead>
     <tbody>
         <% coins.forEach(coin => { %>
             <tr>
               <td> <a href='coins/<%= coin.id %>/show'><img src='<%= coin.image %>' width="50px" alt='<%= coin.id %> logo'></a> </td>
-              <td> <a href='coins/<%= coin.id %>/show' class="index-link"> <strong><%= coin.symbol.toUpperCase() %></strong> </a> </td>
-              <td> <a href='coins/<%= coin.id %>/show' class="index-link"> <%= coin.name %> </a> </td>
+              <td> <a href='coins/<%= coin.id %>/show' class="index-link"> <strong> <%= coin.name %> </strong> </a> </td>
+              <td> <a href='coins/<%= coin.id %>/show' class="index-link"> <span class="symbol-text"><%= coin.symbol.toUpperCase() %></span> </a> </td>
               <td> $<%= coin.current_price > 1 ? coin.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : coin.current_price %> </td>
             </tr>
         <% }) %>

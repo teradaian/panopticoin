@@ -34,6 +34,13 @@ label div:first-child {
     font-size: 1.2em;
 }
 
+.bearish {
+    color: rgb(252, 80, 80)
+}
+
+.bullish {
+    color: rgb(51, 129, 51);
+}
 
 .cross{
     margin-right:15px;

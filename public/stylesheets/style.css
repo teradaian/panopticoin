@@ -88,6 +88,11 @@ div.search {
   width: 200px;
 }
 
+span.symbol-text {
+  color: lightgrey;
+  font-weight: 200;
+}
+
 .search-form {
   margin-bottom: 0;
 }
