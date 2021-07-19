@@ -36,28 +36,38 @@
 <div class="wrapper">
     <div class="wrap-1">
       <input type="checkbox" id="tab-1" name="tabs">
-      <label for="tab-1"><div>about</div><div class="cross"></div></label>
+      <label for="tab-1"><div>About</div><div class="cross"></div></label>
       <div class="content"><p> <%- coin.description.en %> </p> </div>
     </div>
 </div>
 
-<h3>Add to watchlist</h3>
-<div class="show-watchlists-container">
-<% if(profile.watchlists) { %>
-<% profile.watchlists.forEach(watchlist => { %>
-        <form action="/api/coins/<%= coin.id %>" method="POST">
-            <input value= "<%= watchlist._id %>" name="watchlistId">
-            <button class="button button-clear show-add-btn" type="submit">
-                <i class="fas fa-plus-circle"></i>
-                <%= watchlist.title %>
-            </button>
-        </form>
-<% }) %>
-</ul>
-<% } else { %>
-Add a watchlist
-<% } %>
+<div class="wrapper">
+    <div class="wrap-1">
+      <input type="checkbox" id="tab-2" name="tabs">
+      <label for="tab-2"><div>Add to watchlist</div><div class="cross"></div></label>
+      <div class="content">
+        <div class="show-watchlists-container">
+            <% if(profile.watchlists) { %>
+            <% profile.watchlists.forEach(watchlist => { %>
+                    <form action="/api/coins/<%= coin.id %>" method="POST">
+                        <input value= "<%= watchlist._id %>" name="watchlistId">
+                        <button class="button button-clear show-add-btn" type="submit">
+                            <i class="fas fa-plus-circle"></i>
+                            <%= watchlist.title %>
+                        </button>
+                    </form>
+            <% }) %>
+            </ul>
+            <% } else { %>
+            Add a watchlist
+            <% } %>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 </main>
 
 <%- include('../partials/footer') %>

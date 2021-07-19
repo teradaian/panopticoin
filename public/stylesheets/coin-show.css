@@ -1,7 +1,7 @@
 .wrapper {
     max-width: 600px;
     width: 100%;
-    margin: 10vh auto;
+    margin: 1vh auto;
 }
 
 h1 {
@@ -25,6 +25,7 @@ label {
     cursor: pointer;
     border: 3px solid #3E474F;
     user-select: none;
+    border-radius: 10px;
 }
 
 label div:first-child {
