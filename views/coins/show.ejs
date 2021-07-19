@@ -41,15 +41,25 @@
       <tr>
         <th>Category</th>
         <th>Market Cap Rank</th>
-        <th>Something Else</th>
+        <th>Price Change 24h</th>
+        <th>Price Change 7d</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td> <%= coin.categories[0] %> </td>
         <td> <%= coin.market_cap_rank %> </td>
-        <td> </td>
-
+        <% trim = (num) => Number.parseFloat(num).toFixed(2) %>
+        <td> 
+            <span  class="<%= coin.market_data.price_change_percentage_24h >= 0 ? "bullish" : "bearish" %>">
+                <%= trim(coin.market_data.price_change_percentage_24h) %>% 
+            </span> 
+        </td>
+        <td> 
+            <span  class="<%= coin.market_data.price_change_percentage_7d >= 0 ? "bullish" : "bearish" %>">
+                <%= trim(coin.market_data.price_change_percentage_7d) %>%
+            </span> 
+        </td>  
       </tr>
     </tbody>
   </table>
