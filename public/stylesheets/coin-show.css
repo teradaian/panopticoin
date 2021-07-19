@@ -34,6 +34,11 @@ label div:first-child {
     font-size: 1.2em;
 }
 
+div.socials {
+    display: flex;
+    gap: 2rem;
+}
+
 .bearish {
     color: rgb(252, 80, 80)
 }

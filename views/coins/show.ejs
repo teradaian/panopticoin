@@ -22,16 +22,16 @@
     <div class="column"> 
         Price Change 24hr: 
         <br>
-        <h2>
+        <h3>
             <span  class="<%= coin.market_data.price_change_24h >= 0 ? "bullish" : "bearish" %>">
                 $<%= coin.market_data.price_change_24h %>
             </span> 
-        </h2> 
+        </h3> 
     </div>
     <div class="column">
          Market Cap:
          <br>
-        <h2>$<%= coin.market_data.market_cap.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %></h2>
+        <h3>$<%= coin.market_data.market_cap.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %></h2>
     </div>
 </div>
 </div>
@@ -41,34 +41,33 @@
       <tr>
         <th>Category</th>
         <th>Market Cap Rank</th>
-        <th>Socials</th>
-        <th></th>
+        <th>Something Else</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td> <%= coin.categories[0] %> </td>
         <td> <%= coin.market_cap_rank %> </td>
-        <td> 
-            <% if(coin.links.homepage[0]){ %> 
-            <a href="<%= coin.links.homepage[0] %>"><i class="fas fa-external-link-alt"></i></a> 
-            <% } %>
-            <% if(coin.links.twitter_screen_name){ %> 
-            <a href="https://twitter.com/<%= coin.links.twitter_screen_name %>"><i class="fab fa-twitter"></i></a>
-            <% } %>
-            <% if(coin.links.subreddit_url){ %> 
-            <a href="<%= coin.links.subreddit_url %>"><i class="fab fa-reddit-alien"></i></a>
-            <% } %>
-        </td>
-        <td> 
-            <% if(coin.links.repos_url.github[0]){ %> 
-            <a href="<%= coin.links.repos_url.github[0]%>"><i class="fab fa-github"></i></a> 
-            <% } %>
-        </td>
+        <td> </td>
 
       </tr>
     </tbody>
   </table>
+
+  <div class="socials">
+    <% if(coin.links.homepage[0]){ %> 
+        <a href="<%= coin.links.homepage[0] %>"><h2><i class="fas fa-external-link-alt"></i></h2></a> 
+        <% } %>
+        <% if(coin.links.twitter_screen_name){ %> 
+        <a href="https://twitter.com/<%= coin.links.twitter_screen_name %>"><h2><i class="fab fa-twitter"></i></h2></a>
+        <% } %>
+        <% if(coin.links.subreddit_url){ %> 
+        <a href="<%= coin.links.subreddit_url %>"><h2><i class="fab fa-reddit-alien"></i></h2></a>
+        <% } %>
+        <% if(coin.links.repos_url.github[0]){ %> 
+        <a href="<%= coin.links.repos_url.github[0]%>"><h2><i class="fab fa-github"></i></h2></a> 
+        <% } %>
+  </div>
 
 <div class="wrapper">
     <div class="wrap-1">

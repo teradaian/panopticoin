@@ -103,6 +103,7 @@ img.self {
 
 div.search {
   width: 200px;
+  margin-right: auto;
 }
 
 span.symbol-text {
