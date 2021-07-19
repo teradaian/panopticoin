@@ -10,6 +10,9 @@
 <div class="row">
     <div class="column">
         <h2><strong><%= coin.symbol.toUpperCase() %></strong></h2>
+        <% if(coin.hashing_algorithm) { %>
+            <p><%= coin.hashing_algorithm %></p>
+        <%} %>
     </div>
     <div class="column"> 
         Current Price: 
@@ -33,6 +36,40 @@
 </div>
 </div>
 
+<table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Market Cap Rank</th>
+        <th>Socials</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <%= coin.categories[0] %> </td>
+        <td> <%= coin.market_cap_rank %> </td>
+        <td> 
+            <% if(coin.links.homepage[0]){ %> 
+            <a href="<%= coin.links.homepage[0] %>"><i class="fas fa-external-link-alt"></i></a> 
+            <% } %>
+            <% if(coin.links.twitter_screen_name){ %> 
+            <a href="https://twitter.com/<%= coin.links.twitter_screen_name %>"><i class="fab fa-twitter"></i></a>
+            <% } %>
+            <% if(coin.links.subreddit_url){ %> 
+            <a href="<%= coin.links.subreddit_url %>"><i class="fab fa-reddit-alien"></i></a>
+            <% } %>
+        </td>
+        <td> 
+            <% if(coin.links.repos_url.github[0]){ %> 
+            <a href="<%= coin.links.repos_url.github[0]%>"><i class="fab fa-github"></i></a> 
+            <% } %>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
 <div class="wrapper">
     <div class="wrap-1">
       <input type="checkbox" id="tab-1" name="tabs">
@@ -40,6 +77,30 @@
       <div class="content"><p> <%- coin.description.en %> </p> </div>
     </div>
 </div>
+
+<% if(coin.status_updates.length){ %>
+<div class="wrapper">
+    <div class="wrap-1">
+      <input type="checkbox" id="tab-3" name="tabs">
+      <label for="tab-3"><div>Recent News</div><div class="cross"></div></label>
+      <div class="content">
+            <% coin.status_updates.forEach(status => { %>
+            <div>
+                <% const formatDate = (dateString) => { %>
+                    <% const options = { year: "numeric", month: "long", day: "numeric" } %>
+                    <% return new Date(dateString).toLocaleDateString(undefined, options) %>
+                <% } %>
+                  <p> <%= formatDate(status.created_at) %></p>
+                <%- status.description %>
+                 <br>
+                 <small>User: <%= status.user %> </small>
+                 <small><em><%= status.user.title %></em></small>
+                </div>
+                <% }) %>
+    </div>
+    </div>
+</div>
+<% } %>
 
 <div class="wrapper">
     <div class="wrap-1">
