@@ -84,6 +84,23 @@ div.search-container{
   justify-content: start;
 }
 
+div.logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img.self {
+  z-index: 1;
+  margin-top: 6.3rem;
+}
+
+#logo {
+  position: absolute;
+  z-index: -1;
+}
+
 div.search {
   width: 200px;
 }

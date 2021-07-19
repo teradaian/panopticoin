@@ -95,3 +95,5 @@ async function searchCoins(req,res){
         res.redirect('/')
     }
 }
+
+

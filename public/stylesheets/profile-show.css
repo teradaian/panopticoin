@@ -6,3 +6,94 @@
 div.show-table-container {
     width: 75vw;
 }
+
+.wrapper {
+    max-width: 600px;
+    width: 100%;
+    margin: 10vh auto;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align:center;
+}
+
+input[type='checkbox'], input[type='radio'] {
+    display: none;
+}
+
+label {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+}
+
+label div:first-child {
+    width: 100%;
+    line-height: 45px;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+.cross{
+    margin-right:15px;
+    margin-top:3px;
+}
+
+.cross:before,.cross:after {
+    content: '';
+    border-top: 2px solid #3E474F;
+    width: 15px;
+    display: block;
+    margin-top: 18px;
+    transition: 0.3s;
+}
+
+.cross:after {
+    transform: rotate(90deg);
+    margin-top: -2px;
+}
+
+.content {
+    box-sizing: border-box;
+    font-size: 0.9em;
+    margin: 10px 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height, .5s;
+}
+
+input:checked ~ .content {
+    max-height: 1000px;
+    transition: max-height, 1s;
+}
+
+input:checked ~ label .cross:before {
+    transform: rotate(180deg);
+}
+
+input:checked ~ label .cross:after {
+    transform: rotate(0deg);
+}
+
+.show-watchlists-container {
+    justify-content: center;
+    align-content: start;
+}
+
+.show-add-btn {
+    font-size: 3rem;
+    margin-top: 1rem;
+    text-transform: capitalize;
+    font-weight: 200;
+}
+
+.button.button-clear, 
+button.button-clear, 
+input[type='button'].button-clear, 
+input[type='reset'].button-clear, 
+input[type='submit'].button-clear {
+    color: #39D87D
+}

@@ -12,12 +12,11 @@
       >
     </div>
   <% } %>
-  <h1><%= isSelf ? "My Profile" : profile.name %></h1>
+  <h1><%= isSelf ? "Your watchlists:" : `${profile.name}'s watchlists:` %></h1>
 
   <% if (isSelf) {%> 
     <% if (profile.watchlists.length) { %>
       <div class="show-table-container">
-    <h1> Your Watchlists: </h1>
     <table>
       <tbody>
     <% watchlists.forEach(watchlist => { %>
@@ -36,21 +35,30 @@
     </div>
 
       <div>
-      <form action="/profiles/<%= profile._id %>/watchlists" method="POST" >
-        <label for="title">Title</label>
-        <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
-        <label for="description">Description</label>
-        <input placeholder="Tell people about your list" id="description" name="description" autocomplete="off"></input>
-        <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
-    </form>
-    <% } else { %>
-      <form action="/profiles/<%= profile._id %>/watchlists" method="POST">
-          <label for="title">Title</label>
-          <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
-          <label for="description">Description</label>
-          <input placeholder="Tell people about your list" id="description" name="description"></input>
-          <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
-      </form>
+        <div class="wrapper">
+          <div class="wrap-1">
+            <input type="checkbox" id="tab-1" name="tabs">
+            <label for="tab-1"><div>Create New Watchlist</div><div class="cross"></div></label>
+
+            <div class="content">
+              <form action="/profiles/<%= profile._id %>/watchlists" method="POST" >
+                <label for="title">Title</label>
+                <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
+                <label for="description">Description</label>
+                <input placeholder="Tell people about your list" id="description" name="description" autocomplete="off"></input>
+                <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
+              </form>
+              <% } else { %>
+              <form action="/profiles/<%= profile._id %>/watchlists" method="POST">
+                  <label for="title">Title</label>
+                  <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
+                  <label for="description">Description</label>
+                  <input placeholder="Tell people about your list" id="description" name="description"></input>
+                  <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
+              </form>
+            </div>
+          </div>
+      </div>
       </div>
 
     <% } %>
