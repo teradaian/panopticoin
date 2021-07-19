@@ -35,14 +35,14 @@ nav div {
 }
 
 nav #title {
-  margin: .5rem 0 0 .5rem;
+  margin: 1rem 0 0 3rem;
   width: 200px;
 }
 
 nav .siwg,
 nav #logout-btn {
-  margin-top: .5rem;
-  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-right: 3rem;
   color: black;
   padding: 0 2.2rem;
   display: flex;
@@ -109,6 +109,10 @@ div.search {
 span.symbol-text {
   color: lightgrey;
   font-weight: 200;
+}
+
+td, th {
+  border-bottom: 0.1rem solid darkslategray;
 }
 
 .search-form {
