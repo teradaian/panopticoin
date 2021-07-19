@@ -88,6 +88,15 @@ div.search {
   width: 200px;
 }
 
+.search-form {
+  margin-bottom: 0;
+}
+
+.search-form fieldset,
+.search-form input {
+  margin-bottom: 0;
+}
+
 .profile-img {
   border-radius: 50%;
 }

@@ -7,5 +7,6 @@ export { router }
 const router = Router()
 
 router.get('/coins', apiCtrl.index)
+router.post('/coins', isLoggedIn, apiCtrl.search)
 router.get('/coins/:id/show', isLoggedIn, apiCtrl.show)
 router.post('/coins/:id', isLoggedIn, apiCtrl.create)

@@ -5,12 +5,13 @@
 
 <div class="search-container">
   <div class="search">
-    <form>
+    <form action="/api/coins" method="POST" class="search-form">
       <fieldset>
-        <input type="text" placeholder="Search" name="query" autocomplete="off">
+        <input type="search" placeholder="Search" name="query" autocomplete="off" aria-label="Search coinGecko database">
         <button type="submit" class="button button-outline submit-btn">Search</button>
       </fieldset>
     </form>
+    <small><p> &nbsp; Search by CoinGecko Id</p></small>
   </div>
 </div>
 

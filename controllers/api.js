@@ -6,6 +6,7 @@ export {
     index,
     showCoin as show,
     create,
+    searchCoins as search
 }
 
 function index(req, res){
@@ -72,5 +73,25 @@ async function create(req,res){
     } catch (Error) {
     console.log(Error)
     res.redirect(`/api/coins/${req.params.id}/show`)
+    }
+}
+
+async function searchCoins(req,res){
+    try {
+        const profile = await Profile.find({ _id: req.user.profile._id})
+        const query = req.body.query.toLowerCase()
+        const result = await fetch(`https://api.coingecko.com/api/v3/coins/${query}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false
+        `)
+        const data = await result.json()
+        if (data.id === undefined) { 
+            console.log(`${query} not found`)
+            res.redirect('/')
+        } else {
+            console.log(data.id, 'fired')
+            res.render('coins/show', {coin: data, profile: profile[0], title: req.body.query})
+        }
+    } catch (Error) {
+        console.log(Error)
+        res.redirect('/')
     }
 }
