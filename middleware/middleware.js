@@ -1,7 +1,7 @@
 export {
     passUserToView,
     isLoggedIn,
-    path
+    // path
 }
 
 let path = null;
@@ -12,7 +12,7 @@ function passUserToView(req, res, next) {
 }
 
 function isLoggedIn(req, res, next) {
-    path = req._parsedOriginalUrl.path
+    // path = req._parsedOriginalUrl.path
     if (req.isAuthenticated()) return next()
     res.redirect('/auth/google')
   }

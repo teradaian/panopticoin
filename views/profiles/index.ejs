@@ -3,6 +3,14 @@
 
 <main>
   <div class="logo-container">
+    <a href="/profiles/<%= user.profile._id %>">
+      <img
+        class="profile-img self"
+        src="<%= user.profile.avatar %>"
+        alt="<%= user.profile.name %>'s avatar"
+        width="100%"
+      />
+  </a>
     <img src="/assets/logo.png" id="logo" alt="logo.png" width="300px">
     <h3> Welcome <%= user ? user.profile.name : "friend" %> </h3>
   </div>
