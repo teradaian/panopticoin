@@ -17,29 +17,30 @@
             <a href="/api/coins/<%= coin.id %>/show" alt="info about <%= coin.id %>"><img src="<%= coin.image %>" alt="<%= coin.id %>" width="90px"></a>
             <br>
             <a href="/api/coins/<%= coin.id %>/show" alt="info about <%= coin.id %>"><span class="symbol"><%= coin.symbol %></span></a>
-            <form
-            action="/profiles/watchlists/<%= watchlist.id %>/show/<%= coin._id %>?_method=DELETE"
-            method="POST"
-            >
-            <button 
-                type="submit" 
-                class="button button-clear"
-                id="delete-coin" 
-            >
-            <h4><i class="far fa-eye-slash fa-hover-hidden"></i> <i class="fas fa-eye-slash fa-hover-show"></i></h4>
-            </button>
-        </form>
+            
+            <% if(isSelf) { %>
+            <form action="/profiles/watchlists/<%= watchlist.id %>/show/<%= coin._id %>?_method=DELETE" method="POST">
+                <button 
+                    type="submit" 
+                    class="button button-clear"
+                    id="delete-coin" 
+                >
+                <h4><i class="far fa-eye-slash fa-hover-hidden"></i> <i class="fas fa-eye-slash fa-hover-show"></i></h4>
+                </button>
+            </form>
+            <% } %>
         </div>
         <% }) %>
 </div>
         
-
+<% if(isSelf) { %>
 <a href='/api/coins'><h1>Add Coins 
     <i class="far fa-plus-square fa-hover-hidden"></i>
     <i class="fas fa-plus-square fa-hover-show"></i>
     <i class="fas fa-coins fa-hover-show"></i>
 </h1>
 </a>
+<% } %>
 
 <% if(watchlist.comments.length) { %>
     <% watchlist.comments.forEach(comment => { %>
