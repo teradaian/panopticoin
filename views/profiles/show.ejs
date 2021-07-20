@@ -14,12 +14,13 @@
   <% } %>
   <h1><%= isSelf ? "Your watchlists:" : `${profile.name}'s watchlists:` %></h1>
 
-  <% if (isSelf) {%> 
+  <% if(isSelf) { %> 
+
     <% if (profile.watchlists.length) { %>
       <div class="show-table-container">
     <table>
       <tbody>
-    <% watchlists.forEach(watchlist => { %>
+    <% profile.watchlists.forEach(watchlist => { %>
           <tr>
             <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.title %></a></td>
             <td><%= watchlist.description %></td>
@@ -61,6 +62,30 @@
       </div>
       </div>
 
+    <% } %>
+
+   <% } else { %>
+
+    <% if (profile.watchlists.length) { %>
+      <div class="show-table-container">
+    <table>
+      <tbody>
+    <% profile.watchlists.forEach(watchlist => { %>
+          <tr>
+            <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.title %></a></td>
+            <td><%= watchlist.description %></td>
+            <td>
+                <% watchlist.coins.forEach(coin => { %>
+                  <img src="<%= coin.image %>" width="40px"></img>
+                <% }) %>
+            </td>
+          </tr>
+    <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } else { %> 
+    <h1><%= profile.name %> doesn't have any watchlists yet</h1>
     <% } %>
   <% } %>
 
