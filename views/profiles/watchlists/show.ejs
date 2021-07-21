@@ -42,10 +42,33 @@
 </a>
 <% } %>
 
+<% if(isSelf) { %>
+    <div class="options">
+        <a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/edit" class="button button-clear">
+            <h1><i class="far fa-edit fa-hover-hidden"></i> <i class="fas fa-edit fa-hover-show"></i></h1>
+        </a>
+        <form
+            action="/profiles/watchlists/<%= watchlist._id %>?_method=DELETE"
+            method="POST"
+            >
+            <button 
+                type="submit" 
+                class="button button-clear"
+                id="delete" 
+            >
+            <h1><i class="far fa-trash-alt"></i></h1>
+            </button>
+        </form>
+    </div>
+<% } %>
+
 <% if(watchlist.comments.length) { %>
+    <h4>Comments:</h4>
     <% watchlist.comments.forEach(comment => { %>
+        <p class='comment-author'> Author: <%= comment.author %> </p>
+        <div class="comment-card">
         <p> <%= comment.text%> </p>
-        <p> Author: <%= comment.author %> </p>
+        </div>
     <% }) %>
 
     <% if(!isSelf){ %> 
@@ -55,7 +78,7 @@
             <input type="hidden" name="author" value="<%=user.profile.name%>">
         </label>
         <label for="text">
-            <textarea type="text" id="text" placeholder="Comment" name="text">
+            <textarea type="text" id="text" placeholder="Comment" name="text"></textarea>
         </label>
         <button type="submit">Add Comment</button>
     </form>
@@ -77,25 +100,7 @@
     <% } %>
 <% } %>
 
-<% if(isSelf) { %>
-<div class="options">
-    <a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/edit" class="button button-clear">
-        <h1><i class="far fa-edit fa-hover-hidden"></i> <i class="fas fa-edit fa-hover-show"></i></h1>
-    </a>
-    <form
-        action="/profiles/watchlists/<%= watchlist._id %>?_method=DELETE"
-        method="POST"
-        >
-        <button 
-            type="submit" 
-            class="button button-clear"
-            id="delete" 
-        >
-        <h1><i class="far fa-trash-alt"></i></h1>
-        </button>
-    </form>
-</div>
-<% } %>
+
 
 </main>
 

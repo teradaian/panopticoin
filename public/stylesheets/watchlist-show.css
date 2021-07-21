@@ -34,11 +34,11 @@ header {
   input[type='button'].button-clear, 
   input[type='reset'].button-clear, 
   input[type='submit'].button-clear {
-      color: #39D87D;
+    color: #39D87D;
   }
   
   .button.button-clear:hover {
-      color: #39D87D
+    color: #39D87D
   }
 
   div.watchlist {
@@ -47,12 +47,28 @@ header {
     gap: 2rem;
   }
 
-  div.coin-container {
+div.comment-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid darkslategray;
+    padding: .5rem 2rem;
+}
+
+.comment-author {
+  margin-top: 1rem;
+  margin-bottom: .3rem;
+}
+
+div.coin-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
+}
 
   span.symbol {
     text-transform: uppercase;
