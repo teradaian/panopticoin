@@ -19,6 +19,7 @@ passport.use(
           const newProfile = new Profile({
             name: profile.displayName,
             avatar: profile.photos[0].value,
+            watchlists: []
           })
           const newUser = new User({
             email: profile.emails[0].value,
@@ -31,7 +32,6 @@ passport.use(
           })
           newUser.save(function (err) {
             if (err) {
-              console.log(err, 'in newUser')
               // Something went wrong while making a user - delete the profile
               // we just created to prevent orphan profiles.
               Profile.findByIdAndDelete(newProfile._id)
