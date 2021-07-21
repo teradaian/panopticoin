@@ -22,7 +22,7 @@
       <tbody>
     <% profile.watchlists.forEach(watchlist => { %>
           <tr>
-            <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.title %></a></td>
+            <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.watchlistTitle %></a></td>
             <td><%= watchlist.description %></td>
             <td>
                 <% watchlist.coins.forEach(coin => { %>
@@ -72,7 +72,7 @@
       <tbody>
     <% profile.watchlists.forEach(watchlist => { %>
           <tr>
-            <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.title %></a></td>
+            <td><a href="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>"><%= watchlist.watchlistTitle %></a></td>
             <td><%= watchlist.description %></td>
             <td>
                 <% watchlist.coins.forEach(coin => { %>
