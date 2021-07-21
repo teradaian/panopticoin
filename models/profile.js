@@ -4,18 +4,11 @@ export {
   Profile
 }
 
-const commentSchema = new Schema({
-  author: String,
-  comment: String,
-}, {
-  timestamps: true
-})
 
 const watchlistSchema = new Schema({
-  title: {type: String, unique: true},
+  title: String,
   description: String,
   coins: [{type: Schema.Types.ObjectId, 'ref': 'Coin'}],
-  comments: [commentSchema],
 }, {
   timestamps: true
 })
