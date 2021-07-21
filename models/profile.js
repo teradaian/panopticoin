@@ -21,7 +21,7 @@ const watchlistSchema = new Schema({
 })
 
 const profileSchema = new Schema({
-  name: {type: String, unique: true},
+  name: String,
   avatar: String,
   watchlists: [watchlistSchema],
 }, {
