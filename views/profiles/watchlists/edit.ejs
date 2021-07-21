@@ -5,7 +5,7 @@
 <main>
     <form action="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>?_method=PUT" method="POST">
         <label for="title">Title</label>
-        <input type="text" value="<%= watchlist.title %>" id="title" name="title" autocomplete="off" required>
+        <input type="text" value="<%= watchlist.watchlistTitle %>" id="title" name="watchlistTitle" autocomplete="off" required>
         <label for="description">Description</label>
         <input value="<%= watchlist.description %>" id="description" name="description"></input>
         <button type="submit" class="button button-outline"><h3><i class="fas fa-rocket"></i></h3></button>
