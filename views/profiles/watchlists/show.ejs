@@ -47,8 +47,35 @@
         <p> <%= comment.comment %> </p>
         <p> Author: <%= comment.author %> </p>
     <% }) %>
+
+    <% if(!isSelf){ %> 
+    <form action="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/comment?_method=PUT" method="POST">
+        <label for="author">
+            <input type="text" id="author" value="<%=user.profile.name%>" disabled>
+            <input type="hidden" name="author" value="<%=user.profile.name%>">
+        </label>
+        <label for="text">
+            <textarea type="text" id="text" placeholder="Comment" name="text">
+        </label>
+        <button type="submit">Add Comment</button>
+    </form>
+    <% } %>
+
 <% } else { %>
 <p>No comments yet</p>
+<% if(!isSelf){ %> 
+    <% } %>
+    <form action="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/comment?_method=PUT" method="POST">
+        <label for="author">
+            <input type="text" id="author" value="<%=user.profile.name%>" disabled>
+            <input type="hidden" name="author" value="<%=user.profile.name%>">
+        </label>
+        <label for="text">
+            <textarea type="text" id="text" placeholder="Comment" name="text"></textarea>
+        </label>
+        <button type="submit">Add Comment</button>
+    </form>
+
 <% } %>
 
 <% if(isSelf) { %>

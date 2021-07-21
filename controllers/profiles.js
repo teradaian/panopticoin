@@ -8,7 +8,8 @@ export {
     showList,
     editList,
     update,
-    deleteCoinFromList
+    deleteCoinFromList,
+    newComment
 }
 
 function index(req, res){
@@ -132,5 +133,15 @@ async function deleteCoinFromList(req, res){
     } catch (Error) {
         console.log(Error)
         res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
+    }
+}
+
+async function newComment(req, res) {
+    try {
+      console.log(req.body)
+
+    } catch (Error) {
+      console.log(Error)
+      res.redirect(`/`)
     }
 }

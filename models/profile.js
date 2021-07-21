@@ -5,9 +5,17 @@ export {
   Profile
 }
 
+const commentSchema = new Schema({
+  author: String,
+  text: String
+}, {
+  timestamps: true
+})
+
 const watchlistSchema = new Schema({
   watchlistTitle: String,
   description: String,
+  comments: [commentSchema],
   coins: [{type: Schema.Types.ObjectId, 'ref': 'Coin'}],
 }, {
   timestamps: true
