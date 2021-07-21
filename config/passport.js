@@ -26,6 +26,7 @@ passport.use(
             profile: newProfile._id
           })
           newProfile.save(function (err) {
+            console.log(err, 'newprofileerr')
             if (err) return done(err)
           })
           newUser.save(function (err) {
