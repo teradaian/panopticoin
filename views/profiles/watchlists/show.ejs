@@ -73,6 +73,7 @@
 
     <% if(!isSelf){ %> 
     <form action="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/comment?_method=PUT" method="POST">
+        <p><%= profile._id %></p>
         <label for="author">
             <input type="text" id="author" value="<%=user.profile.name%>" disabled>
             <input type="hidden" name="author" value="<%=user.profile.name%>">
@@ -100,10 +101,6 @@
     <% } %>
 <% } %>
 
-
-
 </main>
-
-
 
 <%- include('../../partials/footer') %>
