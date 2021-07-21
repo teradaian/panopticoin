@@ -26,11 +26,12 @@ passport.use(
             profile: newProfile._id
           })
           newProfile.save(function (err) {
-            console.log(err, 'newprofileerr')
+            console.log(err, 'in save')
             if (err) return done(err)
           })
           newUser.save(function (err) {
             if (err) {
+              console.log(err, 'in newUser')
               // Something went wrong while making a user - delete the profile
               // we just created to prevent orphan profiles.
               Profile.findByIdAndDelete(newProfile._id)
