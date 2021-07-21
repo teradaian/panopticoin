@@ -14,14 +14,14 @@ const commentSchema = new Schema({
 const watchlistSchema = new Schema({
   title: {type: String, unique: true},
   description: String,
-  coins: [{type: Schema.Types.ObjectId, 'ref':'Coin'}],
+  coins: [{type: Schema.Types.ObjectId, 'ref': 'Coin'}],
   comments: [commentSchema],
 }, {
   timestamps: true
 })
 
 const profileSchema = new Schema({
-  name: String,
+  name: {type: String, unique: true},
   avatar: String,
   watchlists: [watchlistSchema],
 }, {
