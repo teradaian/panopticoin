@@ -52,7 +52,7 @@
               <% } else { %>
               <form action="/profiles/<%= profile._id %>/watchlists" method="POST">
                   <label for="title">Title</label>
-                  <input type="text" placeholder="Title" id="title" name="title" autocomplete="off" required>
+                  <input type="text" placeholder="Title" id="title" name="watchlistTitle" autocomplete="off" required>
                   <label for="description">Description</label>
                   <input placeholder="Tell people about your list" id="description" name="description"></input>
                   <button type="submit" class="button button-outline">TO THE MOON! <i class="fas fa-rocket"></i> <i class="far fa-moon"></i></button>
