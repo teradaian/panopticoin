@@ -138,10 +138,13 @@ async function deleteCoinFromList(req, res){
 
 async function newComment(req, res) {
     try {
-      console.log(req.body)
-
+        const profile = await Profile.findById(req.params.id)
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        watchlist.comments.push(req.body)
+        await profile.save()
+        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
     } catch (Error) {
       console.log(Error)
-      res.redirect(`/`)
+      res.redirect(`/profiles`)
     }
 }

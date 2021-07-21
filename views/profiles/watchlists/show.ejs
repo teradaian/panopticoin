@@ -44,7 +44,7 @@
 
 <% if(watchlist.comments.length) { %>
     <% watchlist.comments.forEach(comment => { %>
-        <p> <%= comment.comment %> </p>
+        <p> <%= comment.text%> </p>
         <p> Author: <%= comment.author %> </p>
     <% }) %>
 
@@ -64,7 +64,6 @@
 <% } else { %>
 <p>No comments yet</p>
 <% if(!isSelf){ %> 
-    <% } %>
     <form action="/profiles/<%= profile._id %>/watchlists/<%= watchlist._id %>/comment?_method=PUT" method="POST">
         <label for="author">
             <input type="text" id="author" value="<%=user.profile.name%>" disabled>
@@ -75,7 +74,7 @@
         </label>
         <button type="submit">Add Comment</button>
     </form>
-
+    <% } %>
 <% } %>
 
 <% if(isSelf) { %>
