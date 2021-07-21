@@ -19,7 +19,6 @@ passport.use(
           const newProfile = new Profile({
             name: profile.displayName,
             avatar: profile.photos[0].value,
-            watchlists: []
           })
           const newUser = new User({
             email: profile.emails[0].value,

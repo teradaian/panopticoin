@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
+
 export {
   Profile
 }
 
-
 const watchlistSchema = new Schema({
-  title: String,
+  watchlistTitle: String,
   description: String,
   coins: [{type: Schema.Types.ObjectId, 'ref': 'Coin'}],
 }, {
