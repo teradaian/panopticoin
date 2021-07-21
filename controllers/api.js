@@ -74,7 +74,6 @@ async function create(req,res){
                 res.redirect(`/api/coins/${req.params.id}/show`)
                 })
             } else {
-                console.log(`${req.params.id} exists in DB - skipping add`)
                 Coin.findOne({ id: req.params.id })
                 .then(coin => {
                     watchlist.coins.addToSet(coin)

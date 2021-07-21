@@ -9,7 +9,8 @@ export {
     editList,
     update,
     deleteCoinFromList,
-    newComment
+    newComment,
+    deleteComment
 }
 
 function index(req, res){
@@ -103,10 +104,9 @@ async function editList(req,res){
 async function update(req,res){
     try {
         const profile = await Profile.findById(req.params.id)
-        const user = await Profile.findById(req.user.profile._id)
         const watchlist = await profile.watchlists.id(req.params.watchlistId)
         console.log(watchlist)
-        if (user._id.equals(profile._id)) {
+        if (req.user.profile._id.equals(profile._id)) {
             watchlist.title = req.body.title
             watchlist.description = req.body.description
             await profile.save()
@@ -143,5 +143,18 @@ async function newComment(req, res) {
     } catch (Error) {
       console.log(Error)
       res.redirect(`/profiles`)
+    }
+}
+
+async function deleteComment(req, res){
+    try {
+        const profile = await Profile.findById(req.user.profile._id)
+        const watchlist = await profile.watchlists.id(req.params.watchlistId)
+        watchlist.comments.remove({ _id: req.params.commentId})
+        await profile.save()
+        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
+    } catch (Error) {
+        console.log(Error)
+        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
     }
 }
