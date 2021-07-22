@@ -1,4 +1,4 @@
-<img src="/assets/title-logo.png" width=100% height=auto alt="panopticoin banner">
+<img src="public/assets/title-logo.png" width=100% height=auto alt="panopticoin banner">
 
 PanoptiCoin is a MEN stack Cryptocurrency tracker built on the CoinGecko API. 
 
@@ -38,8 +38,8 @@ The app is deployed on heroku [here](https://panopticoin.herokuapp.com/api/coins
 
 ## Wireframe
 
-<img src="/assets/readme/wireframe.png" width=100% height=auto alt="wireframe">
+<img src="public/assets/readme/wireframe.png" width=100% height=auto alt="wireframe">
 
 ## ERD
 
-<img src="/assets/readme/erd.png" width=100% height=auto alt="erd">
+<img src="public/assets/readme/erd.png" width=100% height=auto alt="erd">
