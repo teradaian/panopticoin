@@ -95,6 +95,14 @@ div.profile-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 80vw;
+}
+
+div.profile-card {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  margin: 1rem;
 }
 
 img.self {
