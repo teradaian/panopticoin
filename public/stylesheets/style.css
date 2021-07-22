@@ -212,6 +212,14 @@ select:focus {
   display: none;
 }
 
+.mobile-lg-details {
+  display: none;
+}
+
+.mobile-sm {
+  display: inline-block;
+}
+
 .bearish {
   color: rgb(252, 80, 80)
 }
@@ -220,7 +228,20 @@ select:focus {
   color: #39D87D;
 }
 
+@media only screen and (min-width: 425px) { 
+  .mobile-sm {
+    display: none;
+  }
+  .mobile-lg-details {
+    display: table-cell;
+  }
+}
+
 @media only screen and (min-width: 1024px) { 
+  .mobile-lg-details {
+    display: table-cell;
+  }
+
   .desktop-details {
     display: table-cell;
   }
