@@ -52,8 +52,8 @@ async function showCoin(req, res){
 
 async function create(req,res){
     try {
-        const profile = await Profile.find({ _id: req.user.profile._id})
-        const watchlist = await profile[0].watchlists.id(req.body.watchlistId)
+        const profile = await Profile.findById(req.user.profile._id)
+        const watchlist = await profile.watchlists.id(req.body.watchlistId)
         fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
         .then(response => response.json())
         .then(async data => {
@@ -70,7 +70,7 @@ async function create(req,res){
                     if (err) { console.log (err) }
                 })
                 watchlist.coins.push(coin._id)
-                profile[0].save(err => {
+                profile.save(err => {
                 res.redirect(`/api/coins/${req.params.id}/show`)
                 })
             } else {
@@ -78,7 +78,7 @@ async function create(req,res){
                 .then(coin => {
                     watchlist.coins.addToSet(coin)
                 })
-                .then(() => profile[0].save(err => {
+                .then(() => profile.save(err => {
                     res.redirect(`/api/coins/${req.params.id}/show`)
                     }))
             }})
