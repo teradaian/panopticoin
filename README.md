@@ -12,7 +12,7 @@ The app is deployed on heroku [here](https://panopticoin.herokuapp.com/api/coins
 
 ## Languages
 
-<img src="public/assets/readme/languages.png" width=100% height=auto alt="wireframe">
+<img src="public/assets/readme/languagesbg.png" width=100% height=auto alt="wireframe">
 * HTML
 * CSS
 * JavaScript
