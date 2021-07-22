@@ -15,7 +15,10 @@ function index(req, res){
         fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false')
         .then(response => response.json())
         .then(data => {
-            res.render('coins/index', { coins: data, title: 'Coin Index', user: req.user ? req.user : null })
+            res.render('coins/index', { 
+                coins: data, 
+                title: 'Coin Index', 
+                user: req.user ? req.user : null })
         })
     } catch (Error) {
         console.log(Error)
@@ -28,7 +31,10 @@ function trending(req, res){
         fetch('https://api.coingecko.com/api/v3/search/trending')
         .then(response => response.json())
         .then(data => {
-            res.render('coins/trending', { coins: data.coins, title: 'Trending', user: req.user ? req.user : null })
+            res.render('coins/trending', { 
+                coins: data.coins, 
+                title: 'Trending', 
+                user: req.user ? req.user : null })
         })
     } catch (Error) {
         console.log(Error)
@@ -42,7 +48,10 @@ async function showCoin(req, res){
         fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?market_data=true`)
         .then(response => response.json())
         .then(data => {
-            res.render('coins/show', {coin: data, profile: profile[0], title: req.params.id})
+            res.render('coins/show', {
+                coin: data, 
+                profile: profile[0], 
+                title: req.params.id})
         })
     } catch (Error) {
         console.log(Error)
