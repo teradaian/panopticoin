@@ -19,47 +19,7 @@ body {
   margin: 0;
 }
 
-nav {
-  background-color: black;
-  font-size: 1.6rem;
-  height: 6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-nav div {
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-
-nav #title {
-  margin: 1rem 0 0 3rem;
-  width: 200px;
-}
-
-nav .siwg,
-nav #logout-btn {
-  margin-top: 1rem;
-  margin-right: 3rem;
-  color: black;
-  padding: 0 2.2rem;
-  display: flex;
-}
-
-nav #logout-btn span {
-  font-size: 2rem;
-}
-
-nav .nav-link {
-  margin: 0 1rem;
-  color: whitesmoke;
-}
-
-nav .nav-link:hover {
-  color: #39D87D;
-}
 
 main {
   display: flex;

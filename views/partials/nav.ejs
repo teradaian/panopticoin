@@ -1,13 +1,17 @@
   <% if (!user) { %>
     <link rel="stylesheet" href="/stylesheets/siwg.css">
   <% } %>
+  <link rel="stylesheet" href="/stylesheets/nav.css" />
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
 
   <nav>
     <a href="/"><img src="/assets/title-logo.png" id="title" alt="logo"></a>
-    <div>
+
+
+
+    <div class="nav-lg">
     <a href="/profiles" class="nav-link">Profiles</a>
     <% if (user) { %>
       <a href="/auth/logout">
@@ -21,4 +25,25 @@
       </a>
     <% } %>
   </div>
+
+  <div class="dropdown nav-sm">
+    <button class="dropbtn button button-outline"><i class="fas fa-bars"></i></button>
+    <div class="dropdown-content">
+      <a href="/profiles" class="nav-link button button-clear">
+        <button type="submit" id="users">Profiles &nbsp; <span><i class="fas fa-users"></i></span></button>
+      </a>
+      <% if (user) { %>
+        <a href="/auth/logout">
+          <button type="submit" id="logout-btn">Logout &nbsp; &nbsp; <span><i class="fas fa-sign-out-alt"></i></span></button>
+        </a>
+      <% } else { %>
+        <a href="/auth/google" class="siwg-link">
+          <button type="submit" class="siwg">
+            <img id="siwg-image" alt="Sign in with Google" />
+          </button>
+        </a>
+      <% } %>
+    </div>
+  </div>
+
   </nav>

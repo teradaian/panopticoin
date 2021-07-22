@@ -1,0 +1,120 @@
+nav {
+    background-color: black;
+    font-size: 1.6rem;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+nav div {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+nav #title {
+    margin: 1rem 0 0 3rem;
+    width: 200px;
+}
+  
+nav .siwg,
+nav #logout-btn {
+    margin-top: 1rem;
+    margin-right: 3rem;
+    color: black;
+    padding: 0 2.2rem;
+    display: flex;
+}
+  
+nav #logout-btn span {
+    font-size: 2rem;
+}
+  
+nav .nav-link {
+    margin: 0 1rem;
+    color: whitesmoke;
+}
+  
+nav .nav-link:hover {
+    color: #39D87D;
+}
+
+.nav-lg {
+    display: none;
+}
+
+.add-btn {
+    display: none;
+  }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.dropbtn {
+    margin-bottom: 0;
+    border-radius: 5px;
+    font-size: 3rem;
+    background: #39D87D;
+    border: none;
+    margin-right: 3rem;
+}
+
+.dropbtn:hover{
+    background: #39D87D;
+    box-shadow: inset -20px -20px 60px #30b86a,
+                inset 20px 20px 60px #42f890;   
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #cdcdcd;
+    min-width: 220px;
+    z-index: 1;
+    border-end-start-radius: 10px;
+}
+
+.dropdown-content a {
+    color: #606c76;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    border-end-start-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: black;
+}
+
+.dropdown:hover .dropdown-content button {
+    width: 100%;
+}
+
+#users {
+    color: black;
+}
+
+#users span {
+    font-size:1.6rem;
+}
+
+#logout-btn {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 1000px) { 
+    .nav-lg {
+        display: flex;
+    }
+    .dropdown {
+        display: none;
+      }
+  }
