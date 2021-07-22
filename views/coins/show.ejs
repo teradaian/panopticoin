@@ -66,16 +66,16 @@
 
   <div class="socials">
     <% if(coin.links.homepage[0]){ %> 
-        <a href="<%= coin.links.homepage[0] %>"><h2><i class="fas fa-external-link-alt"></i></h2></a> 
+        <a href="<%= coin.links.homepage[0] %>" target="_blank"><h2><i class="fas fa-external-link-alt"></i></h2></a> 
         <% } %>
         <% if(coin.links.twitter_screen_name){ %> 
-        <a href="https://twitter.com/<%= coin.links.twitter_screen_name %>"><h2><i class="fab fa-twitter"></i></h2></a>
+        <a href="https://twitter.com/<%= coin.links.twitter_screen_name %>" target="_blank"><h2><i class="fab fa-twitter"></i></h2></a>
         <% } %>
         <% if(coin.links.subreddit_url){ %> 
-        <a href="<%= coin.links.subreddit_url %>"><h2><i class="fab fa-reddit-alien"></i></h2></a>
+        <a href="<%= coin.links.subreddit_url %>" target="_blank"><h2><i class="fab fa-reddit-alien"></i></h2></a>
         <% } %>
         <% if(coin.links.repos_url.github[0]){ %> 
-        <a href="<%= coin.links.repos_url.github[0]%>"><h2><i class="fab fa-github"></i></h2></a> 
+        <a href="<%= coin.links.repos_url.github[0]%>" target="_blank"><h2><i class="fab fa-github"></i></h2></a> 
         <% } %>
   </div>
 
