@@ -107,7 +107,7 @@ async function update(req,res){
         const watchlist = await profile.watchlists.id(req.params.watchlistId)
         console.log(watchlist)
         if (req.user.profile._id.equals(profile._id)) {
-            watchlist.title = req.body.title
+            watchlist.watchlistTitle = req.body.watchlistTitle
             watchlist.description = req.body.description
             await profile.save()
             res.redirect(`/profiles/${profile._id}/watchlists/${watchlist._id}`)
