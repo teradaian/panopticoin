@@ -15,17 +15,16 @@
     <h3> Welcome <%= user ? user.profile.name : "friend" %> </h3>
   </div>
 
-  <div class="container">
-    <div class="row">
+  <div class='profile-container'>
       <% profiles.forEach(profile => { %>
-      <div class="column">
+      <div>
         <a href="/profiles/<%= profile._id %>">
           <% if (profile.avatar) { %>
             <img
               class="profile-img"
               src="<%= profile.avatar %>"
               alt="<%= profile.name %>'s avatar"
-              width="20%"
+              width="100%"
             />
           <% } else {%>
             <img
@@ -38,7 +37,6 @@
         <p> <%= profile.name %> </p>
         <% }) %>
       </div>
-    </div>
   </div>
 </main>
 

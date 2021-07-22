@@ -4,19 +4,17 @@ PanoptiCoin is a MEN stack Cryptocurrency tracker built on the CoinGecko API.
 
 ## About
 
-
+Keeping up to date on a volatile market like Cryptocurrency can feel like a full time job. 
 
 ## Getting Started
 
 The app is deployed on heroku [here](https://panopticoin.herokuapp.com/api/coins)
-
 
 ## Languages
 
 * HTML
 * CSS
 * JavaScript
-
 
 ## Built With
 
