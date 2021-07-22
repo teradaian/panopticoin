@@ -110,11 +110,13 @@ nav .nav-link:hover {
     justify-content: center;
 }
 
-@media only screen and (min-width: 1000px) { 
+@media only screen and (min-width: 768px) { 
     .nav-lg {
         display: flex;
     }
     .dropdown {
         display: none;
       }
+
+
   }
