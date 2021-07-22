@@ -4,14 +4,22 @@ PanoptiCoin is a MEN stack Cryptocurrency tracker built on the CoinGecko API.
 
 ## About
 
-Keeping up to date on a volatile market like Cryptocurrency can feel like a full time job. PanoptiCoin helps you keep an eye on all of your favorite coins with watchlists, an easy way to group crypto projects. It also offers an easy way to view what other users are following and engage with their watchlists. Search the popular and well-established coins from the main page, or search by CoinGecko id for newer or more obscure coins. You can also check out what is currently hot in the crypto sphere via the trending button.
+Keeping up to date on a volatile market like Cryptocurrency can feel like a full time job. PanoptiCoin helps you keep an eye on all of your favorite coins with watchlists, an easy way to group crypto projects. It also lets you view what other users are following and engage with their watchlists. Search the popular and well-established coins from the main page, or search by CoinGecko id for newer or more obscure coins. You can also check out what is currently hot in the crypto sphere via the trending button.
+
+<img src="public/assets/readme/index.png" width=100% height=auto alt="index">
+Top coins index, mobile view.
+<img src="public/assets/readme/showpage.png" width=100% height=auto alt="viewing a coin page">
+Coins page with market data and social information. 
+<img src="public/assets/readme/newwatchlist.png" width=100% height=auto alt="adding a new watchlist">
+Adding a new watchlist
+<img src="public/assets/readme/watchlist.png" width=100% height=auto alt="adding a new watchlist">
 
 ## Getting Started
 
 The app is deployed on heroku [here](https://panopticoin.herokuapp.com/api/coins)
 
 ## Languages
-<img src="public/assets/readme/languagesbg.png" width=100% height=auto alt="wireframe">
+<img src="public/assets/readme/languagesbg.png" width=100% height=auto alt="languages">
 * HTML * CSS * JavaScript
 
 ## Built With

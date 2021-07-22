@@ -6,9 +6,10 @@
     <header>
         <h1><%= watchlist.watchlistTitle %></h1>
         <small><p><%= isSelf ? "Your watchlist" : `${profile.name}'s watchlist` %></p></small>
+        <h4> <%= watchlist.description %> </h4>
     </header>
 
-<h4> <%= watchlist.description %> </h4>
+
 
 <div class="watchlist">
     <% watchlist.coins.forEach(coin => { %>
