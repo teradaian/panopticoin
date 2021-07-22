@@ -8,7 +8,7 @@ PanoptiCoin is a MEN stack Cryptocurrency tracker built on the CoinGecko API.
 
 ## Getting Started
 
-The app is deployed on heroku at https://panopticoin.herokuapp.com/api/coins
+The app is deployed on heroku [here](https://panopticoin.herokuapp.com/api/coins)
 
 
 ## Languages
@@ -20,11 +20,11 @@ The app is deployed on heroku at https://panopticoin.herokuapp.com/api/coins
 
 ## Built With
 
-* CoinGeckoAPI (https://www.coingecko.com/en/api)
-* Mongoose (https://mongoosejs.com/)
-* Express (https://expressjs.com/)
-* Milligram (https://milligram.io/)
-* Font Awesome (https://fontawesome.com/)
+* [CoinGeckoAPI](https://www.coingecko.com/en/api)
+* [Mongoose](https://mongoosejs.com/)
+* [Express](https://expressjs.com/)
+* [Milligram](https://milligram.io/)
+* [Font Awesome](https://fontawesome.com/)
 
 ## Authors
 
