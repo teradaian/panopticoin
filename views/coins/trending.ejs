@@ -19,15 +19,17 @@
             <tr>
               <td> 
                     <a href='<%= coin.item.id %>/show'>
-                        <img src='<%= coin.item.large %>' width="50px" alt='<%= coin.item.id %> logo'>
+                        <img src='<%= coin.item.large %>' width="50px" class="coin-logo" alt='<%= coin.item.id %> logo'>
                     </a> 
                 </td>
                 <td> 
                     <a href='<%= coin.item.id %>/show' class="index-link">
-                         <strong> <%= coin.item.name %> </strong> </a> 
+                         <strong> <%= coin.item.name %> </strong> </a>
+                         <br>
+                  <span class="symbol-text mobile-sm"><%= coin.item.symbol.toUpperCase() %></span> 
                 </td>
                 <td>
-                    <a href='<%= coin.item.id %>/show' class="index-link">
+                    <a href='<%= coin.item.id %>/show' class="index-link mobile-lg-details">
                         <span class="symbol-text"><%= coin.item.symbol.toUpperCase() %></span>
                     </a>
                 </td>
