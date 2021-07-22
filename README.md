@@ -42,4 +42,6 @@ The app is deployed on heroku [here](https://panopticoin.herokuapp.com/api/coins
 
 ## ERD
 
-<img src="public/assets/readme/erd.png" width=100% height=auto alt="erd">
+<img src="public/assets/readme/ERD.png" width=100% height=auto alt="erd">
+
+<img src="public/assets/logo.png" width=100% height=auto alt="panopticoin banner">
