@@ -14,9 +14,9 @@ function index(req, res){
     try {
         fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false')
         .then(response => response.json())
-        .then(data => {
+        .then(coins => {
             res.render('coins/index', { 
-                coins: data, 
+                coins, 
                 title: 'Coin Index', 
                 user: req.user ? req.user : null })
         })
@@ -30,9 +30,9 @@ function trending(req, res){
     try {
         fetch('https://api.coingecko.com/api/v3/search/trending')
         .then(response => response.json())
-        .then(data => {
+        .then(coins => {
             res.render('coins/trending', { 
-                coins: data.coins, 
+                coins, 
                 title: 'Trending', 
                 user: req.user ? req.user : null })
         })
@@ -80,7 +80,7 @@ async function create(req,res){
                 })
                 watchlist.coins.push(coin._id)
                 profile.save(err => {
-                res.redirect(`/api/coins/${req.params.id}/show`)
+                    res.redirect(`/api/coins/${req.params.id}/show`)
                 })
             } else {
                 Coin.findOne({ id: req.params.id })

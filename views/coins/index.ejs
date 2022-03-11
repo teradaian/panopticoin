@@ -28,10 +28,22 @@
                   <span class="symbol-text mobile-sm"><%= coin.symbol.toUpperCase() %></span>
                 </a> 
               </td>
-              <td class="mobile-lg-details"> <a href='coins/<%= coin.id %>/show' class="index-link"> <span class="symbol-text"><%= coin.symbol.toUpperCase() %></span> </a> </td>
+              <td class="mobile-lg-details"> 
+                <a href='coins/<%= coin.id %>/show' class="index-link"> 
+                  <span class="symbol-text"><%= coin.symbol.toUpperCase() %></span> 
+                </a> 
+              </td>
               <td> $<%= coin.current_price > 1 ? coin.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : coin.current_price %> </td>
-              <td class="desktop-details"> 24hr High <i class="fas fa-chevron-up bullish"> </i> $<%= coin.high_24h %> </td>
-              <td class="desktop-details"> 24hr Low <i class="fas fa-chevron-down bearish"> </i> $<%= coin.low_24h %> </td>
+              <td class="desktop-details"> 
+                24hr High 
+                <i class="fas fa-chevron-up bullish"></i> $
+                <%= coin.high_24h %> 
+              </td>
+              <td class="desktop-details"> 
+                24hr Low 
+                <i class="fas fa-chevron-down bearish"> </i> $
+                <%= coin.low_24h %> 
+              </td>
               <% trim = (num) => Number.parseFloat(num).toFixed(2) %>
               <td class="desktop-details"> 
                 Price Change: 
