@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as apiCtrl from '../controllers/api.js'
+import * as apiCtrl from '../controllers/coins.js'
 import { isLoggedIn } from '../middleware/middleware.js';
 
 export { router }
