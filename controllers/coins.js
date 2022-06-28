@@ -13,12 +13,8 @@ export {
 async function index(req, res){
     try {
         const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false')
-        const data = await response.json()
-        res.render('coins/index', { 
-                coins: data, 
-                title: 'Coin Index', 
-                user: req.user ? req.user : null
-        })
+        const coins = await response.json()
+        res.render('coins/index', { coins, title: 'Coin Index', })
     } catch (Error) {
         console.log(Error)
         res.json(Error)

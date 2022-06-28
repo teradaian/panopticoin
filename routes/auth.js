@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import passport from 'passport'
-import { User } from '../models/user.js'
 
 export {
   router
@@ -15,7 +14,8 @@ router.get(
 
 router.get(
   '/google/oauth2callback',
-  passport.authenticate('google', { failureRedirect: '/auth/google', failureMessage: true }), (req, res) => res.redirect('/profiles/' + req.user.profile)
+  passport.authenticate('google', { failureRedirect: '/auth/google', failureMessage: true }),
+  (req, res) => res.redirect('/profiles/' + req.user.profile)
 )
 
 router.get('/logout', function (req, res) {
