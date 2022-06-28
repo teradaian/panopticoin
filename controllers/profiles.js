@@ -134,13 +134,13 @@ async function newComment(req, res) {
 
 async function deleteComment(req, res){
     try {
-        const profile = await Profile.findById(req.user.profile._id)
+        const profile = await Profile.findById(req.user.profile)
         const watchlist = await profile.watchlists.id(req.params.watchlistId)
-        watchlist.comments.remove({ _id: req.params.commentId})
-        await profile.save()
-        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
-    } catch (Error) {
-        console.log(Error)
-        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
+        await watchlist.comments.remove({ _id: req.params.commentId})
+        profile.save()
+    } catch (error) {
+        console.log(error)
+    } finally {
+        res.redirect(`/profiles/${req.user.profile}/watchlists/${req.params.watchlistId}`)
     }
 }
