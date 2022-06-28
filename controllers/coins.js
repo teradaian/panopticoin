@@ -61,31 +61,21 @@ async function create(req,res){
     try {
         const profile = await Profile.findById(req.user.profile._id)
         const watchlist = await profile.watchlists.id(req.body.watchlistId)
-        fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
-        .then(response => response.json())
-        .then(async ({ id, symbol, name, large }) => {
-            await Coin.findOne({ id }, (err, found) => {
-            if (err) { console.log (err) }
-            if (!found) {
-                let coin = new Coin({ id,symbol,name,image })
-                coin.save()
-                watchlist.coins.push(coin._id)
-                profile.save(err => {
-                    res.redirect(`/api/coins/${req.params.id}/show`)
-                })
-            } else {
-                Coin.findOne({ id: req.params.id })
-                .then(coin => {
-                    watchlist.coins.addToSet(coin)
-                })
-                .then(() => profile.save(err => {
-                    res.redirect(`/api/coins/${req.params.id}/show`)
-                    }))
-            }})
-        })
+        const response = await fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
+        const {id, symbol, name, large} = await response.json()
+        const found = await Coin.findOne({ id })
+        if (!found) {
+            let coin = await Coin.create({ id, symbol, name, image: large })
+            watchlist.coins.push(coin._id)
+        } else {
+            const found = await Coin.findOne({ id: req.params.id })
+            watchlist.coins.addToSet(found)
+        }
+        profile.save()
     } catch (Error) {
-    console.log(Error)
-    res.redirect(`/api/coins/${req.params.id}/show`)
+        console.log(Error)
+    } finally {
+        res.redirect(`/coins/${req.params.id}/show`)
     }
 }
 

@@ -14,9 +14,9 @@
 <div class="watchlist">
     <% watchlist.coins.forEach(coin => { %>
         <div class="coin-container">
-            <a href="/api/coins/<%= coin.id %>/show" alt="info about <%= coin.id %>"><img src="<%= coin.image %>" alt="<%= coin.id %>" width="90px"></a>
+            <a href="/coins/<%= coin.id %>/show" alt="info about <%= coin.id %>"><img src="<%= coin.image %>" alt="<%= coin.id %>" width="90px"></a>
             <br>
-            <a href="/api/coins/<%= coin.id %>/show" alt="info about <%= coin.id %>"><span class="symbol"><%= coin.symbol %></span></a>
+            <a href="/coins/<%= coin.id %>/show" alt="info about <%= coin.id %>"><span class="symbol"><%= coin.symbol %></span></a>
             
             <% if(isSelf) { %>
             <form action="/profiles/watchlists/<%= watchlist.id %>/show/<%= coin._id %>?_method=DELETE" method="POST">
@@ -34,7 +34,7 @@
 </div>
         
 <% if(isSelf) { %>
-<a href='/api/coins'><h1>Add Coins 
+<a href='/coins'><h1>Add Coins 
     <i class="far fa-plus-square fa-hover-hidden"></i>
     <i class="fas fa-plus-square fa-hover-show"></i>
     <i class="fas fa-coins fa-hover-show"></i>

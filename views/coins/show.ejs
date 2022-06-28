@@ -118,7 +118,7 @@
       <div class="content">
             <% if(profile.watchlists.length) { %>
             <% profile.watchlists.forEach(watchlist => { %>
-                    <form action="/api/coins/<%= coin.id %>" method="POST">
+                    <form action="/coins/<%= coin.id %>" method="POST">
                         <input value= "<%= watchlist._id %>" name="watchlistId">
                         <button class="button button-clear show-add-btn" type="submit">
                             <i class="fas fa-plus-circle"></i>
