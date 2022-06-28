@@ -100,22 +100,22 @@ async function update(req,res){
         } else {
             throw new Error ('Not Authorized')
         }
-    } catch (Error) {
-        console.log(Error)
+    } catch (error) {
+        console.log(error)
         res.redirect(`/profiles`)
     }
 }
 
 async function deleteCoinFromList(req, res){
     try {
-        const profile = await Profile.findById(req.user.profile._id)
+        const profile = await Profile.findById(req.user.profile)
         const watchlist = await profile.watchlists.id(req.params.watchlistId)
         watchlist.coins.remove({ _id: req.params.coinId })
-        await profile.save()
-        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
-    } catch (Error) {
-        console.log(Error)
-        res.redirect(`/profiles/${req.user.profile._id}/watchlists/${req.params.watchlistId}`)
+        profile.save()
+    } catch (error) {
+        console.log(error)
+    } finally {
+        res.redirect(`/profiles/${req.user.profile}/watchlists/${req.params.watchlistId}`)
     }
 }
 
@@ -124,11 +124,11 @@ async function newComment(req, res) {
         const profile = await Profile.findById(req.params.id)
         const watchlist = await profile.watchlists.id(req.params.watchlistId)
         watchlist.comments.push(req.body)
-        await profile.save()
+        profile.save()
         res.redirect(`/profiles/${req.params.id}/watchlists/${req.params.watchlistId}`)
-    } catch (Error) {
-      console.log(Error)
-      res.redirect(`/profiles`)
+    } catch (error) {
+        console.log(error)
+        res.redirect(`/profiles`)
     }
 }
 
