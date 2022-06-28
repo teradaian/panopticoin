@@ -71,16 +71,14 @@ async function create(req,res){
 
 async function searchCoins(req,res){
     try {
-        const profile = await Profile.find({ _id: req.user.profile._id})
+        const profile = await Profile.findById(req.user.profile)
         const query = req.body.query.toLowerCase()
-        const result = await fetch(`${API}${query}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false
-        `)
-        const data = await result.json()
-        if (data.id === undefined) { 
-            console.log(`${query} not found`)
-            res.redirect('/')
+        const result = await fetch(`${API}${query}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`)
+        const coin = await result.json()
+        if (coin.id === undefined) { 
+            throw new Error(`${query} is not a valid ID`)
         } else {
-            res.render('coins/show', {coin: data, profile: profile[0], title: req.body.query})
+            res.render('coins/show', {coin, profile, title: req.body.query})
         }
     } catch (Error) {
         console.log(Error)

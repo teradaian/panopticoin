@@ -13,33 +13,27 @@ export {
     deleteComment
 }
 
-function index(req, res){
-    Profile.find({}, (err, profiles) => {
-        res.render('profiles/index', {err, profiles, title: "Profiles"})
-    })
-    .catch(err => {
+async function index(req, res){
+    try {
+        const profiles = await Profile.find({})
+        res.render('profiles/index', {profiles, title: "Profiles"})
+    } catch (error) {
+        console.log(error)
         res.redirect(`/profiles/${req.user.profile}`)
-    })
+    }
 }
 
 async function showProfile(req, res){
     try{
-        Profile.findById(req.params.id)
-        .populate({path: 'watchlists', populate: {path: 'coins'}})
-        .exec((err, profile) => {
-            if (err) { console.log(err) }
-            const isSelf = req.user.profile._id.equals(profile._id)
-            res.render('profiles/show', {
-                profile, 
-                title: `${profile.name}`,
-                isSelf
-            })
-        })
-        } catch (Error){
-        console.log(Error)
+        const profile = await Profile.findById(req.params.id).populate('watchlists.coins')
+        const isSelf = req.user.profile.equals(profile._id)
+        res.render('profiles/show', { profile, isSelf, title: profile.name })
+    } catch (error){
+        console.log(error)
         res.redirect('/profiles')
     }
 }
+
 
 async function newList(req,res) {
     try {
