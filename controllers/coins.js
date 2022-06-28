@@ -34,15 +34,10 @@ async function trending(req, res){
 
 async function showCoin(req, res){
     try{
-        const profile = await Profile.find({ _id: req.user.profile._id})
-        fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?market_data=true`)
-        .then(response => response.json())
-        .then(data => {
-            res.render('coins/show', {
-                coin: data, 
-                profile: profile[0], 
-                title: req.params.id})
-        })
+        const profile = await Profile.findById(req.user.profile)
+        const response = await fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?market_data=true`)
+        const coin = await response.json()
+        res.render('coins/show', { coin, profile, title: req.params.id })
     } catch (Error) {
         console.log(Error)
         res.json(Error)
@@ -54,7 +49,7 @@ async function create(req,res){
         const profile = await Profile.findById(req.user.profile._id)
         const watchlist = await profile.watchlists.id(req.body.watchlistId)
         const response = await fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
-        const {id, symbol, name, large} = await response.json()
+        const {id, symbol, name, image: {large}} = await response.json()
         const found = await Coin.findOne({ id })
         if (!found) {
             let coin = await Coin.create({ id, symbol, name, image: large })
