@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import passport from 'passport'
-import User from './models/user.js'
+import { User } from '../models/user.js'
 
 export {
   router
@@ -13,15 +13,9 @@ router.get(
   passport.authenticate('google', { scope: ['profile', 'email'] })
 )
 
-const loginUserOnSuccess = async(req, res) => {
-  const user = await User.findById(req.user._id)
-  const profile = user.profile
-  res.redirect('/' + profile)
-}
-
 router.get(
   '/google/oauth2callback',
-  passport.authenticate('google', { failureRedirect: '/auth/google' }, loginUserOnSuccess)
+  passport.authenticate('google', { failureRedirect: '/auth/google', failureMessage: true }), (req, res) => res.redirect('/profiles/' + req.user.profile)
 )
 
 router.get('/logout', function (req, res) {
