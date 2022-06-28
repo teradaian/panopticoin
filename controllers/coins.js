@@ -10,9 +10,11 @@ export {
     trending
 }
 
+const API = 'https://api.coingecko.com/api/v3/coins/'
+
 async function index(req, res){
     try {
-        const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false')
+        const response = await fetch(`${API}markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false`)
         const coins = await response.json()
         res.render('coins/index', { coins, title: 'Coin Index', })
     } catch (Error) {
@@ -35,7 +37,7 @@ async function trending(req, res){
 async function showCoin(req, res){
     try{
         const profile = await Profile.findById(req.user.profile)
-        const response = await fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?market_data=true`)
+        const response = await fetch(`${API}${req.params.id}?market_data=true`)
         const coin = await response.json()
         res.render('coins/show', { coin, profile, title: req.params.id })
     } catch (Error) {
@@ -48,8 +50,9 @@ async function create(req,res){
     try {
         const profile = await Profile.findById(req.user.profile._id)
         const watchlist = await profile.watchlists.id(req.body.watchlistId)
-        const response = await fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
+        const response = await fetch(`${API}${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
         const {id, symbol, name, image: {large}} = await response.json()
+
         const found = await Coin.findOne({ id })
         if (!found) {
             let coin = await Coin.create({ id, symbol, name, image: large })
@@ -70,7 +73,7 @@ async function searchCoins(req,res){
     try {
         const profile = await Profile.find({ _id: req.user.profile._id})
         const query = req.body.query.toLowerCase()
-        const result = await fetch(`https://api.coingecko.com/api/v3/coins/${query}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false
+        const result = await fetch(`${API}${query}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false
         `)
         const data = await result.json()
         if (data.id === undefined) { 
