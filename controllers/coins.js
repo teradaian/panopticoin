@@ -24,12 +24,8 @@ async function index(req, res){
 async function trending(req, res){
     try {
         const response = await fetch('https://api.coingecko.com/api/v3/search/trending')
-        const data = await response.json()
-        res.render('coins/trending', { 
-            coins: data, 
-            title: 'Trending', 
-            user: req.user ? req.user : null 
-        })
+        const { coins } = await response.json()
+        res.render('coins/trending', { coins, title: 'Trending', })
     } catch (Error) {
         console.log(Error)
         res.json(Error)
