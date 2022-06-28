@@ -25,15 +25,14 @@ async function index(req, res){
     }
 }
 
-function trending(req, res){
+async function trending(req, res){
     try {
-        fetch('https://api.coingecko.com/api/v3/search/trending')
-        .then(response => response.json())
-        .then(coins => {
-            res.render('coins/trending', { 
-                coins, 
-                title: 'Trending', 
-                user: req.user ? req.user : null })
+        const response = await fetch('https://api.coingecko.com/api/v3/search/trending')
+        const data = await response.json()
+        res.render('coins/trending', { 
+            coins: data, 
+            title: 'Trending', 
+            user: req.user ? req.user : null 
         })
     } catch (Error) {
         console.log(Error)
@@ -64,19 +63,12 @@ async function create(req,res){
         const watchlist = await profile.watchlists.id(req.body.watchlistId)
         fetch(`https://api.coingecko.com/api/v3/coins/${req.params.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
         .then(response => response.json())
-        .then(async data => {
-            await Coin.findOne({ id: data.id }, (err, found) => {
+        .then(async ({ id, symbol, name, large }) => {
+            await Coin.findOne({ id }, (err, found) => {
             if (err) { console.log (err) }
             if (!found) {
-                let coin = new Coin({
-                    id: data.id,
-                    symbol: data.symbol,
-                    name: data.name,
-                    image: data.image.large,
-                })
-                coin.save(err => {
-                    if (err) { console.log (err) }
-                })
+                let coin = new Coin({ id,symbol,name,image })
+                coin.save()
                 watchlist.coins.push(coin._id)
                 profile.save(err => {
                     res.redirect(`/api/coins/${req.params.id}/show`)
@@ -108,7 +100,6 @@ async function searchCoins(req,res){
             console.log(`${query} not found`)
             res.redirect('/')
         } else {
-            console.log(data.id, 'fired')
             res.render('coins/show', {coin: data, profile: profile[0], title: req.body.query})
         }
     } catch (Error) {

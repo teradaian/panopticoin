@@ -11,4 +11,8 @@ function passUserToView(req, res, next) {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next()
     res.redirect('/auth/google')
-  }
+}
+
+// function attributeAuthor(req, res, next) {
+
+// }
